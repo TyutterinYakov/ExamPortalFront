@@ -1,27 +1,29 @@
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row" style="margin-top: 20px;">
+        <div class="row mt15">
 
             <div class="col-md-6 offset-md-3">
+              <mat-card>
                 <div class="container text-center">
                     <img src="../../../assets/logo.png" alt="" class="src" height="200px">
                 </div>
-
-
                 <h1 class="text-center">Зарегистрируйтесь</h1>
 
-                {{user | json}}
+                <!-- {{user | json}} -->
                 <form (ngSubmit)="formSubmit()">
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Логин</mat-label>
                     <input 
+                    required
                     [(ngModel)]="user.userName"
                     name="userName"
                     matInput placeholder="Введите логин">
+                    <mat-hint>Имя пользователя должно быть уникальным</mat-hint>
                   </mat-form-field>
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Пароль</mat-label>
                     <input
+                    required
                     [(ngModel)]="user.password" 
                     name="password"
                     type="password" matInput placeholder="Введите пароль">
@@ -29,6 +31,7 @@
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Имя</mat-label>
                     <input
+                    required
                     [(ngModel)]="user.firstName"
                     name="firstName"
                     matInput placeholder="Введите свое имя">
@@ -36,6 +39,7 @@
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Фамилия</mat-label>
                     <input
+                    required
                     [(ngModel)]="user.lastName"
                     name="lastName"
                      matInput placeholder="Введите свою фамилию">
@@ -43,6 +47,7 @@
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Почта</mat-label>
                     <input 
+                    required
                     [(ngModel)]="user.email"
                     name="email"
                     type="email" matInput placeholder="Введите свою почту">
@@ -50,15 +55,18 @@
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Номер</mat-label>
                     <input 
+                    required
+                    type="number"
                     [(ngModel)]="user.phone"
                     name="phone"
                     matInput placeholder="Введите свой телефон">
                   </mat-form-field>
                   <div class="container text-center">
                       <button type="submit" mat-raised-button color="primary">Зарегистрироваться</button>
-                    <button mat-raised-button color="warn" style="margin-left: 15px">Очистить</button>
+                    <button mat-raised-button color="warn" class="ml15">Очистить</button>
                 </div>
                 </form>
+              </mat-card>
             </div>
         </div>
 

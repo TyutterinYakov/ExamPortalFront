@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt15">
+            <div class="col-md-6 offset-md-3">
+
+                <mat-card>
+                <div class="container text-center">
+                <img src="../../../assets/logo.png" alt="" class="src" height="200px">
+                </div>
+                <h1 class="text-center">Авторизуйтесь</h1>
+                <form action="">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Логин</mat-label>
+                        <input
+                        required
+                        matInput placeholder="Введите свое имя">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Пароль</mat-label>
+                        <input type="password"
+                        required
+                        matInput placeholder="Введите свой пароль">
+                      </mat-form-field>
+
+                      <div class="container text-center" >
+                          <button mat-raised-button color="primary" type="submit">Войти</button>
+                        <button mat-raised-button color="warn" class="ml15">Очистить</button>
+                    </div>
+
+                </form>
+            </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
