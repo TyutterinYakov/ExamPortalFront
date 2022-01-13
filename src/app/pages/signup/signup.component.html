@@ -1,0 +1,70 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/logo.png" alt="" class="src" height="200px">
+                </div>
+
+
+                <h1 class="text-center">Зарегистрируйтесь</h1>
+
+                {{user | json}}
+                <form (ngSubmit)="formSubmit()">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Логин</mat-label>
+                    <input 
+                    [(ngModel)]="user.userName"
+                    name="userName"
+                    matInput placeholder="Введите логин">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Пароль</mat-label>
+                    <input
+                    [(ngModel)]="user.password" 
+                    name="password"
+                    type="password" matInput placeholder="Введите пароль">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Имя</mat-label>
+                    <input
+                    [(ngModel)]="user.firstName"
+                    name="firstName"
+                    matInput placeholder="Введите свое имя">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Фамилия</mat-label>
+                    <input
+                    [(ngModel)]="user.lastName"
+                    name="lastName"
+                     matInput placeholder="Введите свою фамилию">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Почта</mat-label>
+                    <input 
+                    [(ngModel)]="user.email"
+                    name="email"
+                    type="email" matInput placeholder="Введите свою почту">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Номер</mat-label>
+                    <input 
+                    [(ngModel)]="user.phone"
+                    name="phone"
+                    matInput placeholder="Введите свой телефон">
+                  </mat-form-field>
+                  <div class="container text-center">
+                      <button type="submit" mat-raised-button color="primary">Зарегистрироваться</button>
+                    <button mat-raised-button color="warn" style="margin-left: 15px">Очистить</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
