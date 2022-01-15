@@ -1,0 +1,61 @@
+<mat-card *ngIf="user"> 
+    <mat-card-title>Мой профиль</mat-card-title>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+
+                <div class="container text-center">
+                    <img src="../../../assets/profile.png" alt="" class="profile-image">
+                    <h1 class="mt15">{{user.firstName}} {{user.lastName}}</h1>
+                </div>
+                <!-- {{user | json}} -->
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table text-center">
+                            <tr>
+                                <td>Логин</td>
+                                <td>{{user.userName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Имя</td>
+                                <td>{{user.firstName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Фамилия</td>
+                                <td>{{user.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Номер телефона</td>
+                                <td >{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Почта</td>
+                                <td >{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Роль</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            
+                            <tr *ngIf="user.enabled">
+                                
+                                <td>Статус</td>
+                                <td >Активный</td>
+                            </tr>
+                            <tr *ngIf="!user.enabled">
+                                
+                                <td>Статус</td>
+                                <td >Заблокированный</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-card-actions class="text-center">
+            <button mat-raised-button color="primary">Изменить</button>
+            <button mat-raised-button color="warn">Удалить</button>
+        </mat-card-actions>
+
+    </mat-card-content>
+</mat-card>

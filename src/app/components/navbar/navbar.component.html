@@ -32,7 +32,7 @@
     </a>
     <a
     (click)="logout()"
-    *ngIf="login.isLoggedIn()"
+    *ngIf="isLoggedIn"
     mat-icon-button
      class="example-icon
       favorite-icon"
@@ -42,4 +42,30 @@
         logout
         </mat-icon>
     </a>
+    <a
+    *ngIf="isLoggedIn&&login.getUserRole()=='ADMIN'"
+    [routerLink]="'admin/profile'"
+    mat-icon-button
+     class="example-icon
+      favorite-icon"
+       aria-label="Example icon-button with heart icon">
+        
+      <mat-icon>
+        account_circle
+        </mat-icon>
+    </a>
+    <!-- Двойное нажатие для авторизации из-за функции getUserRole(), но без нее непонятно, какое отображение профиля выбрать... -->
+    <a
+    *ngIf="isLoggedIn&&login.getUserRole()=='USER'"   
+    [routerLink]="'user/profile'"
+    mat-icon-button
+     class="example-icon
+      favorite-icon"
+       aria-label="Example icon-button with heart icon">
+        
+      <mat-icon>
+        account_circle
+        </mat-icon>
+    </a>
+    
   </mat-toolbar>
