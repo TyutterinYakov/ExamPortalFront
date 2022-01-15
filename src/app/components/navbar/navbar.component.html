@@ -9,6 +9,7 @@
     <span class="example-spacer"></span>
     
     <a
+    *ngIf="!login.isLoggedIn()"
     [routerLink]="'/login'"
     mat-icon-button
      class="example-icon
@@ -18,6 +19,7 @@
       <mat-icon>login</mat-icon>
     </a>
     <a
+    *ngIf="!login.isLoggedIn()"
     [routerLink]="'/register'"
     mat-icon-button
      class="example-icon
@@ -26,6 +28,18 @@
         
       <mat-icon>
         app_registration
+        </mat-icon>
+    </a>
+    <a
+    (click)="logout()"
+    *ngIf="login.isLoggedIn()"
+    mat-icon-button
+     class="example-icon
+      favorite-icon"
+       aria-label="Example icon-button with heart icon">
+        
+      <mat-icon>
+        logout
         </mat-icon>
     </a>
   </mat-toolbar>
