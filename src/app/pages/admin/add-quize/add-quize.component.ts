@@ -1,6 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { CategoryService } from 'src/app/services/category.service';
+import { QuizeService } from 'src/app/services/quize.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-quize',
@@ -9,8 +14,27 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class AddQuizeComponent implements OnInit {
 
+
+  categoryData={
+    questionId:'',
+    title:'',
+    description:''
+  }
+  
+  quize={
+    title:'',
+    description:'',
+    maxMarks:'',
+    countOfQuestion:'',
+    category:this.categoryData,
+    active:'',
+
+  }
+
   categories=null;
-  constructor(private _category:CategoryService) { }
+
+  constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService) { }
+
 
   ngOnInit(): void {
     this._category.categories().subscribe(
@@ -20,9 +44,46 @@ export class AddQuizeComponent implements OnInit {
         
       }, (error)=>{
         console.log(error);
+        Swal.fire("Ошибка", "Попробуйте чуть позже");
         
       }
     )
     
+  }
+
+  formSubmit(){
+    if(this.quize.title.trim()=='' || this.quize.title==null || this.quize.maxMarks==null || this.quize.countOfQuestion==null ){
+      this._snack.open("Введите обязательные поля!", "", {
+        duration:1000
+      })
+      return;
+    }
+    this._quize.addQuize(this.quize).subscribe(
+      (data:any)=>{
+        Swal.fire("Успешно!", "Категория успешно добавлена");
+
+        
+        this.quize={
+          title:'',
+          description:'',
+          maxMarks:'',
+          countOfQuestion:'',
+          category:this.categoryData,
+          active:'',
+      
+        }
+        this.categoryData={
+          questionId:'',
+          title:'',
+          description:''
+        }
+        
+        
+      },
+      (error)=>{
+        console.log("Ошибка на стороне сервера");
+        Swal.fire("Ошибка", "Попробуйте позже");
+      }
+    );
   }
 }

@@ -1,10 +1,11 @@
 <mat-card>
 
     <mat-card-title>Добавить тест</mat-card-title>
+    {{quize | json}}
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <form action="">
+                    <form (ngSubmit)="formSubmit()">
 
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Название</mat-label>
@@ -14,6 +15,7 @@
                             placeholder="Введите название" 
                             name="title"
                             matInput
+                            [(ngModel)]="quize.title"
                             
                             >
                         </mat-form-field>
@@ -25,6 +27,7 @@
                             name="description"
                             matInput
                             rows="10"
+                            [(ngModel)]="quize.description"
                             ></textarea>
                         </mat-form-field>
                         <div class="row">
@@ -35,8 +38,9 @@
                                     required
                                     type="number" 
                                     placeholder="Введите максимальное количество баллов" 
-                                    name="title"
                                     matInput
+                                    [(ngModel)]="quize.maxMarks"
+                                    name="maxMarks"
                                     >
                                 </mat-form-field>
                             </div>
@@ -47,8 +51,9 @@
                                         required
                                         type="number" 
                                         placeholder="Введите количество вопросов" 
-                                        name="title"
                                         matInput
+                                        [(ngModel)]="quize.countOfQuestion"
+                                        name="countOfQuestion"
                                         >
                                     </mat-form-field>
                             </div>
@@ -57,17 +62,21 @@
                         <mat-slide-toggle
                             color="primary"
                             [checked]="false"
+                            [(ngModel)]="quize.active"
+                            name="active"
                         >
+                            
                             Опубликовать?
                         </mat-slide-toggle>
                         <br/>
                         <mat-form-field appearance="fill" class="mt15 w100">
                             <mat-label>Категория</mat-label>
-                            <mat-select name="category">
-                              <mat-option *ngFor="let c of categories" [value]="c.categoryId">
+                            <mat-select  name="category" [(ngModel)]="quize.category" required>
+                              <mat-option *ngFor="let c of categories" [value]="c">
                                 {{c.title}}
                               </mat-option>
                             </mat-select>
+
                           </mat-form-field>
                           <div class="container text-center">
                               <button mat-flat-button color="primary" type="submit">Сохранить</button>
