@@ -24,3 +24,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mt15{
     margin-top: 15px !important;
 }
+
+.mt5{
+    margin-top: 5px !important;
+}
+
+.mt10{
+    margin-top: 10px !important;
+}

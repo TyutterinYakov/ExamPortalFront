@@ -1,0 +1,23 @@
+<mat-card *ngFor="let q of quizies" class="mt5">
+
+    <mat-card-header>
+        <div class="example-header-image" mat-card-avatar></div>
+            <mat-card-title>
+                {{q.title}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{q.category.title}}
+            </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content><p>{{q.description}}</p></mat-card-content>
+    <mat-card-actions>
+        <button mat-stroked-button color="primary">Просмотр</button>
+        <button mat-stroked-button class="ml15" color="primary">Редактирование</button>
+        <button mat-stroked-button color="primary">Статистика</button>
+        <button mat-stroked-button color="warn">Баллов: {{q.maxMarks}}</button>
+        <button mat-stroked-button color="warn">Вопросов: {{q.numberOfQuestion}}</button>
+    </mat-card-actions>
+</mat-card>
+<div class="container text-center mt15 mb15">
+    <button mat-flat-button color="primary" routerLink="/admin/add-quize">Добавить тест</button>
+</div>

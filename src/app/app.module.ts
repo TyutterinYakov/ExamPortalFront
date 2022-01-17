@@ -27,6 +27,10 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuiziesComponent } from './pages/admin/view-quizies/view-quizies.component';
+import { AddQuizeComponent } from './pages/admin/add-quize/add-quize.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -45,6 +49,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     WelcomeComponent,
     ViewCategoriesComponent,
     AddCategoryComponent,
+    ViewQuiziesComponent,
+    AddQuizeComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,9 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule
+
     
 
   ],
