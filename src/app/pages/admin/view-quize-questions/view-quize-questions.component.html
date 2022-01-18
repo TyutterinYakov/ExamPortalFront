@@ -1,0 +1,43 @@
+<h1 class="mt15">Вопросы из {{quizeTitle}}</h1>
+
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+<div class="container">
+    <button mat-raised-button color="primary" class="mb15" [routerLink]="'/admin/add-question/'+quizeId">Добавить вопрос</button>
+</div>
+
+            <mat-card *ngFor="let q of questions ; let i=index" class ="mt5"> 
+                <mat-card-content>
+
+                    <p>
+                        <strong>#{{i+1}}</strong> <span class="ml15" [innerHTML]="q.content"></span>
+                    </p>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>1) {{q.option1}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>2) {{q.option2}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>3) {{q.option3}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>4) {{q.option4}}</p>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <p class="mt15"><strong>Правильный ответ: {{q.answer}}</strong></p>
+                    </div>
+
+
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+
+</div>
