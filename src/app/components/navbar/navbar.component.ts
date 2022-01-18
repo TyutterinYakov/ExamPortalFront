@@ -15,7 +15,7 @@ user=null;
   ngOnInit(): void {
     this.isLoggedIn=this.login.isLoggedIn();
     this.user=this.login.getUser();
-    console.log("Hello ngOnInit");
+
    this.login.loginStatusSubject.asObservable().subscribe((data)=>
     {
       this.isLoggedIn=this.login.isLoggedIn();

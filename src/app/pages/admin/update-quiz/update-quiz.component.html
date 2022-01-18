@@ -1,11 +1,11 @@
 <mat-card>
 
-    <mat-card-title>Добавить тест</mat-card-title>
+    <mat-card-title>Изменить тест</mat-card-title>
     <!-- {{quize | json}} -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <form (ngSubmit)="formSubmit()">
+                    <form *ngIf="quize" (ngSubmit)="formSubmit()">
 
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Название</mat-label>
@@ -71,8 +71,8 @@
                         <br/>
                         <mat-form-field appearance="fill" class="mt15 w100">
                             <mat-label>Категория</mat-label>
-                            <mat-select  name="category" [(ngModel)]="quize.category" required>
-                              <mat-option *ngFor="let c of categories" [value]="c">
+                            <mat-select  name="category" [(ngModel)]="quize.category.categoryId" required>
+                              <mat-option *ngFor="let c of categories" [value]="c.categoryId">
                                 {{c.title}}
                               </mat-option>
                             </mat-select>

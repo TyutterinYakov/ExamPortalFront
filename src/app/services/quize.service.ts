@@ -17,4 +17,16 @@ export class QuizeService {
   public addQuize(quize:any){
     return this._http.post(`${baseUrl}/quize/`, quize);
   }
+
+  deleteQuize(id: any) {
+    return this._http.delete(`${baseUrl}/quize/${id}`);
+  }
+
+  getQuize(quizeId: any){
+    return this._http.get(`${baseUrl}/quize/${quizeId}`);
+  }
+
+  updateQuize(quize: any) {
+    return this._http.put(`${baseUrl}/quize/`, quize);
+  }
 }

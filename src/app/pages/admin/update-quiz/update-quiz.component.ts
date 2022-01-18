@@ -1,26 +1,23 @@
-
 import { Component, OnInit } from '@angular/core';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizeService } from 'src/app/services/quize.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-add-quize',
-  templateUrl: './add-quize.component.html',
-  styleUrls: ['./add-quize.component.css'],
+  selector: 'app-update-quiz',
+  templateUrl: './update-quiz.component.html',
+  styleUrls: ['./update-quiz.component.css']
 })
-export class AddQuizeComponent implements OnInit {
-
-
+export class UpdateQuizComponent implements OnInit {
   categoryData={
     categoryId:'',
     title:'',
     description:''
   }
-  
+
+  quizeId=0;
   quize={
     title:'',
     description:'',
@@ -30,11 +27,9 @@ export class AddQuizeComponent implements OnInit {
     active:'',
 
   }
-
   categories=null;
 
-  constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService) { }
-
+  constructor(private _route:ActivatedRoute, private _quize:QuizeService, private _category:CategoryService, private _snack:MatSnackBar, private _router:Router) { }
 
   ngOnInit(): void {
     this._category.categories().subscribe(
@@ -48,7 +43,21 @@ export class AddQuizeComponent implements OnInit {
         
       }
     )
-    
+    this.quizeId = this._route.snapshot.params['quizeId'];
+    // alert(this.quizeId);
+    this._quize.getQuize(this.quizeId).subscribe(
+      (data:any)=>{
+        this.quize=data;
+        console.log(this.quize);
+
+
+      },
+      (error)=>{
+        console.log(error);
+        Swal.fire("Ошибка", "Попробуйте вернуться назад!");
+      }
+    )
+
   }
 
   formSubmit(){
@@ -58,32 +67,18 @@ export class AddQuizeComponent implements OnInit {
       })
       return;
     }
-    this._quize.addQuize(this.quize).subscribe(
+    this._quize.updateQuize(this.quize).subscribe(
       (data:any)=>{
-        Swal.fire("Успешно!", "Тест добавлен");
-
-        
-        this.quize={
-          title:'',
-          description:'',
-          maxMarks:'',
-          countOfQuestion:'',
-          category:this.categoryData,
-          active:'',
-      
-        }
-        this.categoryData={
-          categoryId:'',
-          title:'',
-          description:''
-        }
-        
-        
+        Swal.fire("Успешно!", "Тест обновлен").then((e)=>{
+          this._router.navigate(['/admin/quizies/']);
+        });
       },
+
       (error)=>{
         console.log("Ошибка на стороне сервера");
         Swal.fire("Ошибка", "Попробуйте позже");
       }
     );
   }
+
 }
