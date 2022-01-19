@@ -22,19 +22,22 @@
                             <div class="col-md-6">
                                 <p>2) {{q.option2}}</p>
                             </div>
-                            <div class="col-md-6">
+                            <div *ngIf="q.option3" class="col-md-6">
                                 <p>3) {{q.option3}}</p>
                             </div>
-                            <div class="col-md-6">
+                            <div *ngIf="q.option4" class="col-md-6">
                                 <p>4) {{q.option4}}</p>
                             </div>
                         </div>
                         <mat-divider></mat-divider>
                         <p class="mt15"><strong>Правильный ответ: {{q.answer}}</strong></p>
                     </div>
-
-
                 </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-stroked-button color="primary">Редактировать</button>
+                    <button mat-stroked-button color="warn" (click)="deleteQuestion(q.questionId)">Удалить</button>
+                </mat-card-actions>
 
             </mat-card>
         </div>

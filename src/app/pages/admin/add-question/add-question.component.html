@@ -12,25 +12,32 @@
                     </mat-card-header>
                     <mat-card-content>
                         <form (ngSubmit)="addQuestion()">
-                            <mat-form-field class="w100" appearance="outline">
+                            <!-- <mat-form-field class="w100" appearance="outline">
                                 <mat-label>Вопрос</mat-label>
-                                <textarea rows="7" matInput placeholder="Введите вопрос" name="content" [(ngModel)]="question.content"></textarea>
-                            </mat-form-field>
+                                <textarea required rows="7" matInput placeholder="Введите вопрос" name="content" [(ngModel)]="question.content"></textarea>
+                            </mat-form-field> -->
+                            <ckeditor 
+                            [editor]="Editor" 
+                            data="<p>Введите вопрос!</p>"
+                            name="content"
+                            [(ngModel)]="question.content">
 
-                            <div class="row">
+                        </ckeditor>
+
+                            <div class="row mt15">
                                 <div class="col-md-6">
-                                    <mat-form-field class="w100">
+                                    <mat-form-field class="w100" appearance="outline">
                                         <mat-label>Введите 1 ответ</mat-label>
-                                        <input type="text" matInput
+                                        <input required  type="text" matInput
                                         placeholder="Первый вариант ответа"
                                         name="option1" 
                                         [(ngModel)]="question.option1">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
-                                    <mat-form-field class="w100">
+                                    <mat-form-field class="w100" appearance="outline">
                                         <mat-label>Введите 2 ответ</mat-label>
-                                        <input type="text" matInput
+                                        <input required  type="text" matInput
                                         placeholder="Второй вариант ответа"
                                         name="option2" 
                                         [(ngModel)]="question.option2">
@@ -39,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <mat-form-field class="w100">
+                                    <mat-form-field class="w100" appearance="outline">
                                         <mat-label>Введите 3 ответ</mat-label>
                                         <input type="text" matInput
                                         placeholder="Третий вариант ответа"
@@ -48,7 +55,7 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
-                                    <mat-form-field class="w100">
+                                    <mat-form-field class="w100" appearance="outline">
                                         <mat-label>Введите 4 ответ</mat-label>
                                         <input type="text" matInput
                                         placeholder="Четвертый вариант ответа"
@@ -60,13 +67,13 @@
 
 
                             </div>
-                            <mat-form-field>
-                                <mat-label class="ml15 w100">Выберите правильный ответ</mat-label>
-                                <mat-select required name="answer" [(ngModel)]="question.answer">
-                                    <mat-option [value]="1">Ответ1</mat-option>
-                                    <mat-option [value]="2">Ответ2</mat-option>
-                                    <mat-option [value]="3">Ответ3</mat-option>
-                                    <mat-option [value]="4">Ответ4</mat-option>
+                            <mat-form-field appearance="outline" >
+                                <mat-label>Выберите правильный ответ</mat-label>
+                                <mat-select required  name="answer" [(ngModel)]="question.answer">
+                                    <mat-option *ngIf="question.option1" [value]="question.option1">{{question.option1}}</mat-option>
+                                    <mat-option *ngIf="question.option2" [value]="question.option2">{{question.option2}}</mat-option>
+                                    <mat-option *ngIf="question.option3" [value]="question.option3">{{question.option3}}</mat-option>
+                                    <mat-option *ngIf="question.option4" [value]="question.option4">{{question.option4}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
 

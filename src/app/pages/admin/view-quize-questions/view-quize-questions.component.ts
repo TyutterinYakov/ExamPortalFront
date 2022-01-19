@@ -42,4 +42,31 @@ export class ViewQuizeQuestionsComponent implements OnInit {
 
   }
 
+  deleteQuestion(questionId:any){
+    Swal.fire({
+      icon: 'info',
+      title:'Вы уверены?',
+      confirmButtonText: 'Удалить',
+      showCancelButton: true,
+    }).then((result)=>{
+      if(result.isConfirmed){
+        this._question.deleteQuestion(questionId).subscribe(
+          (data:any)=>{
+            window.location.reload();
+       
+          },
+            
+          (error: any)=>{
+            Swal.fire("Ошибка!", "Проблема на стороне сервера!");
+            console.log(error);
+            
+          }
+    
+        );
+    
+      }
+    });
+    
+  }
+
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import { QuizeService } from 'src/app/services/quize.service';
+import * as ClassicEditorBuild from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-add-question',
@@ -10,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
+  public Editor = ClassicEditorBuild;
   quizeId=0;
 
   question={
@@ -25,7 +28,7 @@ export class AddQuestionComponent implements OnInit {
     answer:''
   }
 
-  constructor(private _route:ActivatedRoute, private _quize:QuizeService, private _question:QuestionService) { }
+  constructor(private _route:ActivatedRoute, private _quize:QuizeService, private _question:QuestionService, private _router:Router) { }
 
   ngOnInit(): void {
     this.quizeId = this._route.snapshot.params['id'];
@@ -43,9 +46,14 @@ export class AddQuestionComponent implements OnInit {
     )
   }
   addQuestion(){
+    if(this.question.content.trim()!=""&&this.question.content!=null&&this.question.option1.trim()!=""&&this.question.option1!=null&&this.question.option2.trim()!=""&&this.question.option2!=null&&this.question.answer.trim()!=""&&this.question.answer!=null){
     this._question.addQuestion(this.question).subscribe(
       (data:any)=>{
-        Swal.fire("Успешно!", "Вопрос добавлен");
+        
+        Swal.fire("Успешно!", "Вопрос добавлен!").then((e)=>{
+          this._router.navigate(['/admin/view-questions/'+this.quizeId+"/"+this.question.quize.title]);
+        });
+
 
         
       },
@@ -54,5 +62,9 @@ export class AddQuestionComponent implements OnInit {
         console.log(error);
       }
     );
+    } else {
+      Swal.fire("Ошибка!", "Заполните все поля!");
+      return;
+    }
   }
 }
