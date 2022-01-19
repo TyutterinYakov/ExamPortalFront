@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizeService } from 'src/app/services/quize.service';
@@ -33,7 +34,7 @@ export class AddQuizeComponent implements OnInit {
 
   categories=null;
 
-  constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService) { }
+  constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService, private _router:Router) { }
 
 
   ngOnInit(): void {
@@ -60,28 +61,16 @@ export class AddQuizeComponent implements OnInit {
     }
     this._quize.addQuize(this.quize).subscribe(
       (data:any)=>{
-        Swal.fire("Успешно!", "Тест добавлен");
+        Swal.fire("Успешно!", "Тест добавлен!").then((e)=>{
+          this._router.navigate(['/admin/quizies']);
+        });
 
-        
-        this.quize={
-          title:'',
-          description:'',
-          maxMarks:'',
-          countOfQuestion:'',
-          category:this.categoryData,
-          active:'',
-      
-        }
-        this.categoryData={
-          categoryId:'',
-          title:'',
-          description:''
-        }
+
         
         
       },
       (error)=>{
-        console.log("Ошибка на стороне сервера");
+
         Swal.fire("Ошибка", "Попробуйте позже");
       }
     );

@@ -29,4 +29,8 @@ export class QuizeService {
   updateQuize(quize: any) {
     return this._http.put(`${baseUrl}/quize/`, quize);
   }
+
+  getQuizeByCategory(categoryId:any){
+    return this._http.get(`${baseUrl}/quize/category/${categoryId}`);
+  }
 }

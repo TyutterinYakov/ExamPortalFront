@@ -14,13 +14,16 @@ export class LoadQuizComponent implements OnInit {
 
 
 catId=0;
-quizies=null;
+quizies:any;
 
   constructor(private _route:ActivatedRoute, private _quize:QuizeService) { }
 
   ngOnInit(): void {
-    this.catId = this._route.snapshot.params['catId'];
-    console.log(this.catId);
+    
+    this._route.params.subscribe((params)=>{
+      this.catId = params['catId'];
+      console.log(this.catId);
+    
 
     if(this.catId==0){
     this._quize.quizies().subscribe(
@@ -35,9 +38,19 @@ quizies=null;
       }
     )
     } else {
-      // this._quize.getQuize().subscribe
+      this._quize.getQuizeByCategory(this.catId).subscribe(
+        (data)=>{
+          this.quizies=data;
+          console.log(data);
+        },
+        (error)=>{
+          console.log(error);
+          Swal.fire("Ошибка", "Попробуйте позже");
+        }
+      );
     }
-
+  });
   }
+
 
 }
