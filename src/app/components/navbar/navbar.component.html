@@ -57,7 +57,7 @@
     <!-- Двойное нажатие для авторизации из-за функции getUserRole(), но без нее непонятно, какое отображение профиля выбрать... -->
     <a
     *ngIf="isLoggedIn&&login.getUserRole()=='USER'"   
-    [routerLink]="'user/profile'"
+    [routerLink]="'user'"
     mat-icon-button
      class="example-icon
       favorite-icon"

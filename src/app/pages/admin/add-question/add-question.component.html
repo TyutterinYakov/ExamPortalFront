@@ -67,7 +67,7 @@
 
 
                             </div>
-                            <mat-form-field appearance="outline" >
+                            <mat-form-field appearance="outline" class="w100">
                                 <mat-label>Выберите правильный ответ</mat-label>
                                 <mat-select required  name="answer" [(ngModel)]="question.answer">
                                     <mat-option *ngIf="question.option1" [value]="question.option1">{{question.option1}}</mat-option>

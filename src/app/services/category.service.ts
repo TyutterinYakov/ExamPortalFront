@@ -18,4 +18,8 @@ export class CategoryService {
     return this._http.post(`${baseUrl}/category/`, category);
   }
 
+  public getCategory(category:any){
+    return this._http.get(`${baseUrl}/category/${category}`, category);
+  }
+
 }

@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
@@ -22,7 +23,19 @@ const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch:'full' },
   { path: '', component: HomeComponent, pathMatch:'full' },
   { path: 'login', component: LoginComponent, pathMatch:'full' },
-  { path: 'user', component: UserDashboardComponent, pathMatch:'full', canActivate:[NormalGuard] },
+  { 
+    path: 'user', 
+    component: UserDashboardComponent, 
+    canActivate:[NormalGuard],
+    children:[
+      {
+        path:'category/:catId',
+        component:LoadQuizComponent
+
+      }
+    ]
+  
+  },
   { 
   path: 'admin',
     component: DashboardComponent,
