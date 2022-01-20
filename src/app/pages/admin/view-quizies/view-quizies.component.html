@@ -14,8 +14,10 @@
         <button mat-stroked-button color="primary" routerLink="/admin/view-questions/{{q.quizeId}}/{{q.title}}">Просмотр</button>
         <button mat-stroked-button class="ml15" color="primary" routerLink="/admin/quize/{{q.quizeId}}">Редактирование</button>
         <button mat-stroked-button color="primary">Статистика</button>
-        <button mat-stroked-button color="warn">Баллов: {{q.maxMarks}}</button>
-        <button mat-stroked-button color="warn">Вопросов: {{q.countOfQuestion}}</button>
+        <button mat-stroked-button color="warn" *ngIf="q.active==false">Закрытый доступ</button>
+        <button mat-stroked-button color="warn" *ngIf="q.active==true">Открытый доступ</button>
+        <!-- <button mat-stroked-button color="warn">Баллов: {{q.maxMarks}}</button>
+        <button mat-stroked-button color="warn">Вопросов: {{q.countOfQuestion}}</button> -->
         <button mat-raised-button color="warn" (click)="deleteQuize(q.quizeId)">Удалить</button>
     </mat-card-actions>
 </mat-card>

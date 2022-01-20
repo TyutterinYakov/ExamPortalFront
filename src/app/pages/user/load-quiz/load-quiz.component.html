@@ -20,9 +20,9 @@
                     </mat-card-content>
                     <mat-card-actions>
                         <button mat-raised-button color="primary">Подробнее</button>
-                        <button mat-raised-button color="warn">Начать</button>
+                        <button mat-raised-button color="warn" [routerLink]="'/user/instructions/'+q.quizeId">Начать</button>
                         <button mat-stroked-button color="warn">Баллов: {{q.maxMarks}}</button>
-                        <button mat-stroked-button color="warn">Вопросов: {{q.countOfQuestion}} </button>
+                        <button mat-stroked-button color="warn">Время: {{q.countOfQuestion}} мин.</button>
                       </mat-card-actions>
                 </mat-card>
             </div>

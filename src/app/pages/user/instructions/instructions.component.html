@@ -1,0 +1,50 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>
+                                Прочитайте руководство по тесту на этой странице полностью
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                Последний шаг перед началом теста
+                            </mat-card-subtitle>
+                        </mat-card-header>
+
+
+                        <mat-card-content class="ml15">
+                            <h1>{{quize.title}}</h1>
+                            <p>{{quize.description}}</p>
+
+                            <mat-divider></mat-divider>
+                            <br>
+                            <h1>Инструкция для теста</h1>
+                            <ul>
+                                <li>Тест автоматически завершится, если вы решите переключиться на другую вкладку или скроете браузер.</li>
+                                <li>При решении не переживайте. При плохом результате, Вы сможете запросить пересдачу у своего преподавателя.</li>
+                                <li>Время на решение теста ограничено, и его Вы сможете наблюдать в углу экрана.</li>
+                                <li>Количество очков, которое максимально можно получить за решение теста, равно <strong>{{quize.maxMarks}} баллам.</strong></li>
+                                <li>Количество вопросов в тесте равно <strong>{{quize.countOfQuestion}} шт.</strong></li>
+                            </ul>
+                            <mat-divider></mat-divider>
+                             <br>
+                             <h1>Начало попытки</h1>
+                             <ul>
+                                 <li>Нажмите на кнопку <strong>"Начать тест"</strong> для старта </li>
+                                 <li>Отсчет времени начнет сразу после нажатия</li>
+                                 <li>Спускайтесь вниз для перехода к следующему вопросу</li>
+                                 <li>Не тратьте время на темы, которые не знаете. При остатке времени, Вы всегда сможете к ним вернуться.</li>
+                             </ul>
+                        </mat-card-content>
+
+
+                        <mat-card-actions class="text-center mb15">
+                            <button mat-raised-button color="primary" (click)="startQuize()">Начать тест</button>
+                        </mat-card-actions>
+                    
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

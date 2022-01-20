@@ -32,7 +32,7 @@ export class AddCategoryComponent implements OnInit {
     this._category.addCategory(this.category).subscribe(
       (data:any)=>{
         Swal.fire("Успешно!", "Категория успешно добавлена").then((e)=>{
-          this._router.navigate(['/admin/categories']);
+          this._router.navigate(['/categories']);
         });
         
         

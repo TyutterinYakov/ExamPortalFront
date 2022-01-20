@@ -1,0 +1,59 @@
+<div class="bootstrap-wrapper">
+    <div class="continer-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <h3>Инструкция</h3>
+            </div>
+            <div class="col-md-8">
+                <ng-container *ngIf="questions">
+                    <h1>Вы решаете тест: <strong>{{questions[0].quize.title}}</strong></h1>
+                </ng-container>
+
+                <mat-card *ngFor="let q of questions; let i=index" class="mt5">
+                    <mat-card-content>
+                        <p> <strong>Вопрос #{{i+1}}</strong><span class="ml15" [innerHTML]="q.content"></span></p>
+                        
+                        <mat-divider></mat-divider>
+                        <br>
+
+                        <div class="row mt15">
+                            <div *ngIf="q.option1" class="col-md-6">
+                                <input type="radio"
+                                [value]="q.option1"
+                                name="i">
+                                {{q.option1}}
+                            </div>
+                            <div *ngIf="q.option2" class="col-md-6">
+                                <input type="radio"
+                                [value]="q.option2"
+                                name="i">
+                                {{q.option2}}
+                            </div>
+                        </div>
+                        <div class="row mt15">
+                            <div *ngIf="q.option3" class="col-md-6">
+                                <input type="radio"
+                                [value]="q.option3"
+                                name="i">
+                                {{q.option3}}
+                            </div>
+                            <div *ngIf="q.option4" class="col-md-6">
+                                <input type="radio"
+                                [value]="q.option4"
+                                name="i">
+                                {{q.option4}}
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+                <div class="container text-center mt15 mb15">
+                    <button mat-raised-button color="primary">Закончить попытку</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+    
+            </div>
+        </div>
+    </div>
+</div>
