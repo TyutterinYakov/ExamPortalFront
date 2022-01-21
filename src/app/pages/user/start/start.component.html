@@ -1,4 +1,4 @@
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
     <div class="continer-fluid">
         <div class="row">
             <div class="col-md-2">
@@ -20,13 +20,16 @@
                             <div *ngIf="q.option1" class="col-md-6">
                                 <input type="radio"
                                 [value]="q.option1"
-                                name="i">
+                                name={{i}}
+                                [(ngModel)]="q.givenAnswer"
+                                >
                                 {{q.option1}}
                             </div>
                             <div *ngIf="q.option2" class="col-md-6">
                                 <input type="radio"
                                 [value]="q.option2"
-                                name="i">
+                                name={{i}}
+                                [(ngModel)]="q.givenAnswer">
                                 {{q.option2}}
                             </div>
                         </div>
@@ -34,13 +37,15 @@
                             <div *ngIf="q.option3" class="col-md-6">
                                 <input type="radio"
                                 [value]="q.option3"
-                                name="i">
+                                name={{i}}
+                                [(ngModel)]="q.givenAnswer">
                                 {{q.option3}}
                             </div>
                             <div *ngIf="q.option4" class="col-md-6">
                                 <input type="radio"
                                 [value]="q.option4"
-                                name="i">
+                                name={{i}}
+                                [(ngModel)]="q.givenAnswer">
                                 {{q.option4}}
                             </div>
                         </div>
@@ -48,12 +53,52 @@
                     </mat-card-content>
                 </mat-card>
                 <div class="container text-center mt15 mb15">
-                    <button mat-raised-button color="primary">Закончить попытку</button>
+                    <button mat-raised-button color="primary" (click)="submitQuize()">Закончить попытку</button>
                 </div>
             </div>
-            <div class="col-md-2">
-    
+            <div class="col-md-2" style="margin-top: 49px">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Время на решение теста
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            Тест автоматически завершится, когда время закончится.
+                        </mat-card-subtitle>
+                        
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h2 class="text-center">{{getFormattedTime()}}</h2>
+                        <mat-spinner  
+                        style="margin: auto"
+                        mode="determinate"
+                        [value]="(timer/(questionLength*2*60))*100"
+                        ></mat-spinner>
+                    </mat-card-content>
+                </mat-card>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="bootstrap-wrapper mt15" *ngIf="isSubmit">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title class="text-center">
+                        Результат теста
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="ml15">
+                    <h3>Баллы: {{markGot}}</h3>
+                    <h3>Правильных ответов: {{correctAnswer}}</h3>
+                    <h3>Пропущенных вопросов: {{attempted}}</h3>
+                </mat-card-content>
+                <mat-card-actions class="text-center mb15">
+                    <button mat-raised-button color="primary" [routerLink]="'/user/category/0'">Вернуться к тестам</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 </div>

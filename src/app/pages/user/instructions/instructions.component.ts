@@ -44,11 +44,9 @@ export class InstructionsComponent implements OnInit {
       denyButtonText: `Отмена`,
       icon: 'info'
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
+
       if (result.isConfirmed) {
         this._router.navigate(['/start/'+this.quizeId]);
-      } else if (result.isDenied) {
-        
       }
     })
   }
