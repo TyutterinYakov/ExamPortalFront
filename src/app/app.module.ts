@@ -41,6 +41,7 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
 import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 
 
@@ -69,7 +70,8 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     UserSidebar,
     LoadQuizComponent,
     InstructionsComponent,
-    StartComponent
+    StartComponent,
+    UpdateQuestionComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import baseUrl from './helper';
 export class QuestionService {
 
 
+
   constructor(private _http:HttpClient) { }
 
 
@@ -28,5 +29,13 @@ export class QuestionService {
 
   public evalQuize(questions:any){
     return this._http.post(`${baseUrl}/question/eval-quize`, questions);
+  }
+
+  public getQuestion(questionId:any){
+    return this._http.get(`${baseUrl}/question/${questionId}`);
+  }
+
+  updateQuestion(question: any) {
+    return this._http.put(`${baseUrl}/question/`, question);
   }
 }
