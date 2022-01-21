@@ -17,8 +17,10 @@ export class StartComponent implements OnInit {
   quizeId=0;
   user=null;
   questions:any;
-  markGot=0;
+  markGot:number=0;
   questionLength=0;
+  questionSkip=0;
+  badQuestion=0;
 
   timer:any;
 
@@ -26,8 +28,8 @@ export class StartComponent implements OnInit {
 
   results:any;
 
-  correctAnswer=0;
-  attempted=0;
+  correctAnswer:any;
+  corrected=0;
   constructor(private locationSt:LocationStrategy, private _login:LoginService, private _route:ActivatedRoute, private _question:QuestionService) { }
 
   ngOnInit(): void {
@@ -90,20 +92,47 @@ export class StartComponent implements OnInit {
   }
   evalQuize() {
     this.isSubmit=true;
-        this.questions.forEach((q:any) => {
 
 
-          if(q.givenAnswer==q.answer){
-            this.correctAnswer++;
+        this._question.evalQuize(this.questions).subscribe(
+          (data:any)=>{
+            this.correctAnswer=data;
             let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
-            this.markGot+=marksSingle;
 
-          } 
-          
-          if(q.givenAnswer.trim()==''){
-            this.attempted++;
+
+            this.correctAnswer.forEach((a:any) => {
+              if(a=="yes"){
+                this.corrected++;
+              } else if(a=="skip"){
+                this.questionSkip++;
+              } else {
+                this.badQuestion++;
+              };
+            });
+
+            this.markGot=parseFloat(Number(marksSingle*this.corrected).toFixed(0));
+            
+          },
+          (error)=>{
+            console.log(error);
+            
           }
-        });
+        )
+
+        // this.questions.forEach((q:any) => {
+
+
+        //   if(q.givenAnswer==q.answer){
+        //     this.correctAnswer++;
+        //     let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
+        //     this.markGot+=marksSingle;
+
+        //   } 
+          
+        //   if(q.givenAnswer.trim()==''){
+        //     this.attempted++;
+        //   }
+        // });
   }
 
   startTimer(){
