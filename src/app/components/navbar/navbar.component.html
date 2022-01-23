@@ -42,8 +42,8 @@
         logout
         </mat-icon>
     </a>
-    <a
-    *ngIf="isLoggedIn&&login.getUserRole()=='ADMIN'"
+     <a
+    *ngIf="isLoggedIn&&role"
     [routerLink]="'admin/profile'"
     mat-icon-button
      class="example-icon
@@ -54,9 +54,9 @@
         account_circle
         </mat-icon>
     </a>
-    <!-- Двойное нажатие для авторизации из-за функции getUserRole(), но без нее непонятно, какое отображение профиля выбрать... -->
+   <!-- Двойное нажатие для авторизации из-за функции getUserRole(), но без нее непонятно, какое отображение профиля выбрать...  -->
     <a
-    *ngIf="isLoggedIn&&login.getUserRole()=='USER'"   
+    *ngIf="isLoggedIn&&!role"   
     [routerLink]="'user'"
     mat-icon-button
      class="example-icon

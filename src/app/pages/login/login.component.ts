@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+
   loginData={
     userName:'',
     password:'',
@@ -31,15 +32,15 @@ export class LoginComponent implements OnInit {
     //Генерация токена
     this.login.generateToken(this.loginData).subscribe(
       (data:any)=>{
-        console.log("Success");
-        console.log(data);
+
+
 
         this.login.loginUser(data.token);
 
         this.login.getCurrentUser().subscribe(
           (user:any)=>{
             this.login.setUser(user);
-            console.log(user);
+
             //refirect admin
             
          //   redirect user
@@ -57,14 +58,15 @@ export class LoginComponent implements OnInit {
 
 
             if(this.login.getUserRole()=="ADMIN"){
-              
-              this.router.navigate(['/admin']);
-              this.login.loginStatusSubject.next(true);
+              window.location.href='/admin';
+              // this.router.navigate(['/admin']);
+              // this.login.loginStatusSubject.next(true);
 
             } else if(this.login.getUserRole()=="USER"){
-
-              this.router.navigate(['/user']);
-              this.login.loginStatusSubject.next(true);
+              window.location.href='/user';
+              // window.navigator.
+              // this.router.navigate(['/user']);
+              // this.login.loginStatusSubject.next(true);
               
             } else {
             this.login.logout();

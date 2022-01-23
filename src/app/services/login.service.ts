@@ -21,7 +21,6 @@ public loginStatusSubject = new Subject<boolean>();
   //Создание токена
     public generateToken(loginData:any){
       
-
       return this.http.post(`${baseUrl}/generate-token`, loginData);
 
     }
@@ -73,7 +72,7 @@ public loginStatusSubject = new Subject<boolean>();
     //Получение роли
     public getUserRole(){
       let user=this.getUser()
-      return user.authorities[0].authority; 
+      return user.role; 
 
     } 
 }
