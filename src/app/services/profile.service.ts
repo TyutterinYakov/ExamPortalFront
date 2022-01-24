@@ -8,9 +8,13 @@ import { LoginService } from './login.service';
 })
 export class ProfileService {
 
+
   constructor(private http:HttpClient, private login:LoginService) { }
 
   removeUser() {
     return this.http.delete(`${baseUrl}/user/`);
+  }
+  updateUser(user: any) {
+    return this.http.put(`${baseUrl}/user/`, user);
   }
 }

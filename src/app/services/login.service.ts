@@ -46,6 +46,7 @@ public loginStatusSubject = new Subject<boolean>();
     public logout(){
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      // this.http.post(`${baseUrl}/logout`);
 
       return true;
     }

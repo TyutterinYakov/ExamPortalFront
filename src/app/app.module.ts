@@ -43,6 +43,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 
 
 
@@ -73,7 +74,8 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
     InstructionsComponent,
     StartComponent,
     UpdateQuestionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

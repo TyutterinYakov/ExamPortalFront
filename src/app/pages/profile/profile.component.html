@@ -32,11 +32,6 @@
                                 <td>Почта</td>
                                 <td >{{user.email}}</td>
                             </tr>
-                            <tr>
-                                <td>Роль</td>
-                                <td>{{user.authorities[0].authority}}</td>
-                            </tr>
-                            
                             <tr *ngIf="user.enabled">
                                 
                                 <td>Статус</td>
@@ -53,7 +48,7 @@
             </div>
         </div>
         <mat-card-actions class="text-center">
-            <button mat-raised-button color="primary">Изменить</button>
+            <button mat-raised-button color="primary" (click)="updateLinkUser()">Изменить</button>
             <button mat-raised-button color="warn" (click)="removeUser()">Удалить аккаунт</button>
         </mat-card-actions>
 

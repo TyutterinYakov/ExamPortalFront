@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { StartComponent } from './pages/user/start/start.component';
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path:'start/:quizeId',
     component:StartComponent,
+    canActivate:[NormalGuard],
+  },
+  {
+    path:'update',
+    component:UpdateProfileComponent,
     canActivate:[NormalGuard],
   },
   { 
@@ -94,8 +100,14 @@ const routes: Routes = [
       {
         path: 'question/:questionId',
         component: UpdateQuestionComponent
-      }
+      },
+      {
+        path:'update',
+        component:UpdateProfileComponent,
+        canActivate:[AdminGuard],
+      },
     ],
+    
   },
 
 ];
