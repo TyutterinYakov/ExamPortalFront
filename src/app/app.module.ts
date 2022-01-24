@@ -42,6 +42,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
 
 
 
@@ -71,7 +72,8 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     LoadQuizComponent,
     InstructionsComponent,
     StartComponent,
-    UpdateQuestionComponent
+    UpdateQuestionComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

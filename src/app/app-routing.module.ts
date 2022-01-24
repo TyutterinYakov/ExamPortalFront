@@ -36,6 +36,10 @@ const routes: Routes = [
         component:LoadQuizComponent
       },
       {
+        path:'profile',
+        component:ProfileComponent,
+      },
+      {
         path:'instructions/:quizeId',
         component:InstructionsComponent
       },
