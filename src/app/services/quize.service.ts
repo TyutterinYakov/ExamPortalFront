@@ -33,4 +33,8 @@ export class QuizeService {
   getQuizeByCategory(categoryId:any){
     return this._http.get(`${baseUrl}/quize/category/${categoryId}`);
   }
+
+  getStatisticQuize(quizeId: number) {
+    return this._http.get(`${baseUrl}/quize/statistic/${quizeId}`);
+  }
 }

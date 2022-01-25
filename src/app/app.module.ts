@@ -44,6 +44,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { StatisticQuizeComponent } from './pages/admin/statistic-quize/statistic-quize.component';
 
 
 
@@ -75,7 +76,8 @@ import { UpdateProfileComponent } from './pages/update-profile/update-profile.co
     StartComponent,
     UpdateQuestionComponent,
     UserProfileComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    StatisticQuizeComponent
   ],
   imports: [
     BrowserModule,
