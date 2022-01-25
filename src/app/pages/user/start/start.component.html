@@ -8,7 +8,7 @@
                 <ng-container *ngIf="questions">
                     <h1>Вы решаете тест: <strong>{{questions[0].quize.title}}</strong></h1>
                 </ng-container>
-
+                
                 <mat-card *ngFor="let q of questions; let i=index" class="mt5">
                     <mat-card-content>
                         <p> <strong>Вопрос #{{i+1}}</strong><span class="ml15" [innerHTML]="q.content"></span></p>
@@ -91,19 +91,13 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="ml15">
-                    <h3>Правильных ответов: {{corrected}}</h3>
-                    <h3>Пропущенных вопросов: {{questionSkip}}</h3>
-                    <h3>Ошибок в вопросах: {{badQuestion}}</h3>
-                    <h3>Количество баллов: {{markGot}}</h3>
+                    <h3>Правильных ответов: {{correctAnswer.validQustion}}</h3>
+                    <h3>Пропущенных вопросов: {{correctAnswer.skipQuestion}}</h3>
+                    <h3>Ошибок в вопросах: {{correctAnswer.invalidQuestion}}</h3>
+                    <h3>Количество баллов: {{correctAnswer.countPoints}}</h3>
                 </mat-card-content>
 
                 <hr>
-                <mat-card-content class="ml15" *ngFor="let q of correctAnswer; let i=index">
-                    <h3 *ngIf="q=='yes'">{{i+1}}) Верно</h3>
-                    <h3 *ngIf="q=='no'">{{i+1}} Неверно</h3>
-                    <h3 *ngIf="q=='skip'">{{i+1}} Пропуск</h3>
-                    <hr>
-                </mat-card-content>
 
                 <mat-card-actions class="text-center mb15">
                     <button mat-raised-button color="primary" [routerLink]="'/user/category/0'">Вернуться к тестам</button>

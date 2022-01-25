@@ -28,7 +28,12 @@ export class StartComponent implements OnInit {
 
   results:any;
 
-  correctAnswer:any;
+  correctAnswer={
+    countPoints:'',
+    validQustion:'',
+    invalidQuestion:'',
+    skipQuestion:''
+  };
   corrected=0;
   constructor(private locationSt:LocationStrategy, private _login:LoginService, private _route:ActivatedRoute, private _question:QuestionService) { }
 
@@ -97,20 +102,24 @@ export class StartComponent implements OnInit {
         this._question.evalQuize(this.questions).subscribe(
           (data:any)=>{
             this.correctAnswer=data;
-            let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
+            console.log(data);
+
+            
+            
+            // let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
 
 
-            this.correctAnswer.forEach((a:any) => {
-              if(a=="yes"){
-                this.corrected++;
-              } else if(a=="skip"){
-                this.questionSkip++;
-              } else {
-                this.badQuestion++;
-              };
-            });
+            // this.correctAnswer.forEach((a:any) => {
+            //   if(a=="yes"){
+            //     this.corrected++;
+            //   } else if(a=="skip"){
+            //     this.questionSkip++;
+            //   } else {
+            //     this.badQuestion++;
+            //   };
+            // });
 
-            this.markGot=parseFloat(Number(marksSingle*this.corrected).toFixed(0));
+            // this.markGot=parseFloat(Number(marksSingle*this.corrected).toFixed(0));
             
           },
           (error)=>{

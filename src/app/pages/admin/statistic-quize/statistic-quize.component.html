@@ -3,7 +3,7 @@
         <mat-card-title>Результаты теста</mat-card-title>
         <mat-list-item *ngFor="let s of statistics">
             <mat-icon mat-list-icon>list</mat-icon>
-            <div mat-line>Пользователь: ---Временно недоступно</div>
+            <div mat-line>ИФ: {{s.user.firstName}} {{s.user.lastName}}</div>
             <div mat-line>Количество баллов: {{s.countPoints}}</div>
             <div mat-line>Правильных ответов: {{s.validQustion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
@@ -13,10 +13,10 @@
     </mat-list>
 
     <div class="col-md-12 mt15" *ngIf="statistics.length==0">
-
+        <mat-card>
             <mat-card-content>
                 <h1>Никто пока не решал этот тест</h1>
             </mat-card-content>
-
+        </mat-card>
     </div>
 </mat-card>
