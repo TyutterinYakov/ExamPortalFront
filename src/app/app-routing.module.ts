@@ -5,6 +5,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { AddQuizeComponent } from './pages/admin/add-quize/add-quize.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { StatisticQuizeComponent } from './pages/admin/statistic-quize/statistic-quize.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
@@ -109,8 +110,11 @@ const routes: Routes = [
       {
         path:'update',
         component:UpdateProfileComponent,
-        canActivate:[AdminGuard],
       },
+      {
+        path:'category/update/:categoryId',
+        component: UpdateCategoryComponent
+      }
     ],
     
   },

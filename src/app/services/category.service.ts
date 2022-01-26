@@ -22,4 +22,13 @@ export class CategoryService {
     return this._http.get(`${baseUrl}/category/${category}`, category);
   }
 
+  deleteCategory(categoryId: any) {
+    return this._http.delete(`${baseUrl}/category/${categoryId}`);
+  }
+
+  updateCategory(category:any) {
+    return this._http.put(`${baseUrl}/category/`, category);
+  }
+
+
 }

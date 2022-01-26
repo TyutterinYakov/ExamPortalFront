@@ -25,5 +25,30 @@ export class ViewCategoriesComponent implements OnInit {
       }
     )
   }
+  deleteCategory(categoryId:any){
+    Swal.fire({
+      icon: 'info',
+      title:'Вы уверены?',
+      confirmButtonText: 'Удалить',
+      showCancelButton: true,
+    }).then((result)=>{
+      if(result.isConfirmed){
+        this._category.deleteCategory(categoryId).subscribe(
+          (data:any)=>{
+            window.location.reload();
+          },
+            
+          (error: any)=>{
+            Swal.fire("Ошибка!", "Проблема на стороне сервера!");
+            console.log(error);
+            
+          }
+    
+        );
+    
+      }
+    });
+    
+  }
 
 }
