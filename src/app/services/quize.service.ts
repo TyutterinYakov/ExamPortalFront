@@ -37,4 +37,12 @@ export class QuizeService {
   getStatisticQuize(quizeId: number) {
     return this._http.get(`${baseUrl}/quize/statistic/${quizeId}`);
   }
+
+  checkUserResult(quizeId: number) {
+    return this._http.get(`${baseUrl}/quize/checkUserResult/${quizeId}`);
+  }
+
+  deleteExamResult(answerId:number) {
+    return this._http.delete(`${baseUrl}/quize/examResult/${answerId}`);
+  }
 }

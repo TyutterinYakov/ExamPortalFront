@@ -8,11 +8,14 @@
             <div mat-line>Правильных ответов: {{s.validQustion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
             <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
+            <mat-card-actions>
+                <button mat-stroked-button color="warn" (click)="removeResult(s.answerId)">Удалить результат</button>
+            </mat-card-actions>
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
 
-    <div class="col-md-12 mt15" *ngIf="statistics.length==0">
+    <div class="col-md-12 mt15" *ngIf="statistics==null||statistics==0">
         <mat-card>
             <mat-card-content>
                 <h1>Никто пока не решал этот тест</h1>
