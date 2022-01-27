@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ExamResultService } from 'src/app/services/exam-result.service';
 import { LoginService } from 'src/app/services/login.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { QuizeService } from 'src/app/services/quize.service';
@@ -37,11 +38,11 @@ export class StartComponent implements OnInit {
   corrected=0;
   constructor(private locationSt:LocationStrategy, private _login:LoginService,
      private _route:ActivatedRoute, private _question:QuestionService,
-      private quize:QuizeService, private router:Router) { }
+      private _exam:ExamResultService, private router:Router) { }
 
   ngOnInit(): void {
     this.quizeId = this._route.snapshot.params['quizeId'];
-    this.quize.checkUserResult(this.quizeId).subscribe(
+    this._exam.checkUserResult(this.quizeId).subscribe(
       (data)=>{
         this.resultCheck=data;
         console.log(data);
@@ -66,12 +67,6 @@ export class StartComponent implements OnInit {
         
       }
     )
-
-
-
-    
-    
-
   }
 
   loadQuestions(){
@@ -130,49 +125,15 @@ export class StartComponent implements OnInit {
     this.isSubmit=true;
 
 
-        this._question.evalQuize(this.questions).subscribe(
+        this._exam.evalQuize(this.questions).subscribe(
           (data:any)=>{
             this.correctAnswer=data;
             console.log(data);
-
-            
-            
-            // let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
-
-
-            // this.correctAnswer.forEach((a:any) => {
-            //   if(a=="yes"){
-            //     this.corrected++;
-            //   } else if(a=="skip"){
-            //     this.questionSkip++;
-            //   } else {
-            //     this.badQuestion++;
-            //   };
-            // });
-
-            // this.markGot=parseFloat(Number(marksSingle*this.corrected).toFixed(0));
-            
           },
           (error)=>{
             console.log(error);
-            
           }
         )
-
-        // this.questions.forEach((q:any) => {
-
-
-        //   if(q.givenAnswer==q.answer){
-        //     this.correctAnswer++;
-        //     let marksSingle = this.questions[0].quize.maxMarks/this.questions.length;
-        //     this.markGot+=marksSingle;
-
-        //   } 
-          
-        //   if(q.givenAnswer.trim()==''){
-        //     this.attempted++;
-        //   }
-        // });
   }
 
   startTimer(){

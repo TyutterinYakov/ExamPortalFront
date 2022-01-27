@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-list>
+        <mat-card-title>Результаты тестов</mat-card-title>
+        <mat-list-item *ngFor="let s of results">
+            <mat-icon mat-list-icon>list</mat-icon>
+            <div mat-line>Тест: {{s.quize.title}}</div>
+            <div mat-line>Категория: {{s.quize.category.title}}</div>
+            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.quize.maxMarks}}</div>
+            <div mat-line>Правильных ответов: {{s.validQustion}}</div>
+            <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
+            <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="col-md-12 mt15" *ngIf="results==null||results==0">
+        <mat-card>
+            <mat-card-content>
+                <h1>Вы пока не решали ни одного теста</h1>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</mat-card>

@@ -46,6 +46,7 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 import { StatisticQuizeComponent } from './pages/admin/statistic-quize/statistic-quize.component';
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { ViewResultComponent } from './pages/user/view-result/view-result.component';
 
 
 
@@ -79,7 +80,8 @@ import { UpdateCategoryComponent } from './pages/admin/update-category/update-ca
     UserProfileComponent,
     UpdateProfileComponent,
     StatisticQuizeComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    ViewResultComponent
   ],
   imports: [
     BrowserModule,
