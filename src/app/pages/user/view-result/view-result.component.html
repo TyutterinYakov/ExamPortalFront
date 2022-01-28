@@ -2,18 +2,34 @@
     <mat-list>
         <mat-card-title>Результаты тестов</mat-card-title>
         <mat-list-item *ngFor="let s of results">
-            <mat-icon mat-list-icon>list</mat-icon>
             <div mat-line>Тест: {{s.quize.title}}</div>
             <div mat-line>Категория: {{s.quize.category.title}}</div>
             <div mat-line>Количество баллов: {{s.countPoints}} из {{s.quize.maxMarks}}</div>
             <div mat-line>Правильных ответов: {{s.validQustion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
             <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
+            <div mat-line *ngFor="let q of s.questionsAndGivenAnswer | keyvalue; let i=index">
+                <hr>
+                <p class="width50">
+                    <strong>#{{i+1}}</strong>
+                    <span class="ml15" [innerHTML]="q.key"></span>
+                    <i *ngFor="let ans of q.value | keyvalue">
+                        Дан ответ: {{ans.key}} 
+                            <strong *ngIf="ans.key==ans.value"> (Верно)</strong>
+                            <strong *ngIf="ans.key!=ans.value"> (Неверно)</strong>
+                        
+                        <br>
+                        Правильный ответ: {{(ans.value)}}
+                    </i>
+                    <br>
+                </p>
+                
+            </div>
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
 
-    <div class="col-md-12 mt15" *ngIf="results==null||results==0">
+    <div class="col-md-12 mt15" *ngIf="results==null||results.length==0">
         <mat-card>
             <mat-card-content>
                 <h1>Вы пока не решали ни одного теста</h1>

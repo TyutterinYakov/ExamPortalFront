@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import { map } from 'rxjs';
 import { ExamResultService } from 'src/app/services/exam-result.service';
 import { QuizeService } from 'src/app/services/quize.service';
 import Swal from 'sweetalert2';
@@ -12,7 +13,21 @@ import Swal from 'sweetalert2';
 export class StatisticQuizeComponent implements OnInit {
 
   quizeId=0;
-  statistics=null;
+  resultMap:Map<String, Map<String, String>> = new Map<String, Map<String, String>>();
+  statistics=[
+    {
+      user: {
+        firstName:'',
+        lastName:''
+      },
+      countPoints:'',
+      validQustion:'',
+      invalidQuestion:'',
+      skipQuestion:'',
+      questionsAndGivenAnswer: this.resultMap,
+      answerId:'',
+    },
+  ];
 
   constructor(private _route:ActivatedRoute, private _exam:ExamResultService) { }
 
@@ -23,7 +38,6 @@ export class StatisticQuizeComponent implements OnInit {
       (data:any)=>{
         this.statistics=data;
         console.log(this.statistics);
-        
       },
       (error)=>{
         console.log(error);
@@ -32,7 +46,7 @@ export class StatisticQuizeComponent implements OnInit {
     
   }
 
-  removeResult(answerId:number){
+  removeResult(answerId:any){
     this._exam.deleteExamResult(answerId).subscribe(
       (data)=>{
         window.location.href="/admin/statistic/"+this.quizeId;

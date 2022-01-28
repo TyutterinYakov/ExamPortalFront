@@ -9,12 +9,33 @@ import Swal from 'sweetalert2';
 })
 export class ViewResultComponent implements OnInit {
 
-  results:any;
+  resultMap:Map<String, Map<String, String>> = new Map<String, Map<String, String>>();
+  results=[
+    {
+      user: {
+        firstName:'',
+        lastName:''
+      },
+      countPoints:'',
+      validQustion:'',
+      invalidQuestion:'',
+      skipQuestion:'',
+      questionsAndGivenAnswer: this.resultMap,
+      answerId:'',
+      quize:{
+        title:'',
+        category:{
+          title:''
+        },
+        maxMarks:''
+      }
+    },
+  ];
   constructor(private _exam:ExamResultService) { }
 
   ngOnInit(): void {
     this._exam.checkAllUserResult().subscribe(
-      (data)=>{
+      (data:any)=>{
         console.log(data);
         this.results=data;
         
