@@ -38,7 +38,7 @@ quizies:any;
       }
     )
     } else {
-      this._quize.getQuizeByCategory(this.catId).subscribe(
+      this._quize.getQuizeByCategoryUser(this.catId).subscribe(
         (data)=>{
           this.quizies=data;
           console.log(data);

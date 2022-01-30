@@ -1,7 +1,7 @@
 <mat-card>
     <mat-list>
         <mat-card-title>Результаты теста</mat-card-title>
-        <mat-list-item *ngFor="let s of statistics">
+        <mat-list-item *ngFor="let s of statistics" class="mb15">
             <div mat-line>ИФ: {{s.user.firstName}} {{s.user.lastName}}</div>
             <div mat-line>Количество баллов: {{s.countPoints}}</div>
             <div mat-line>Правильных ответов: {{s.validQustion}}</div>
@@ -26,6 +26,7 @@
             </div>
 
             <mat-divider></mat-divider>
+
             <div>
                 <button mat-stroked-button color="warn" (click)="removeResult(s.answerId)">Удалить результат</button>
             </div>

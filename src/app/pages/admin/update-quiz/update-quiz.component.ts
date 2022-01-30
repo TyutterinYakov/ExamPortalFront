@@ -45,7 +45,7 @@ export class UpdateQuizComponent implements OnInit {
     )
     this.quizeId = this._route.snapshot.params['quizeId'];
     // alert(this.quizeId);
-    this._quize.getQuize(this.quizeId).subscribe(
+    this._quize.getQuizeAdmin(this.quizeId).subscribe(
       (data:any)=>{
         this.quize=data;
         console.log(this.quize);

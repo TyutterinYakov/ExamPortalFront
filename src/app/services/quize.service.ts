@@ -8,10 +8,14 @@ import baseUrl from './helper';
 export class QuizeService {
 
 
+
   constructor(private _http:HttpClient) { }
 
   quizies(){
     return this._http.get(`${baseUrl}/quize/`);
+  }
+  quiziesAdmin(){
+    return this._http.get(`${baseUrl}/quize/any`);
   }
 
   public addQuize(quize:any){
@@ -30,8 +34,14 @@ export class QuizeService {
     return this._http.put(`${baseUrl}/quize/`, quize);
   }
 
-  getQuizeByCategory(categoryId:any){
+  getQuizeByCategoryUser(categoryId:any){
     return this._http.get(`${baseUrl}/quize/category/${categoryId}`);
+  }
+  getQuizeByCategory(categoryId:any){
+    return this._http.get(`${baseUrl}/quize/category/any/${categoryId}`);
+  }
+  getQuizeAdmin(quizeId: number) {
+    return this._http.get(`${baseUrl}/quize/any/${quizeId}`);
   }
 
 }

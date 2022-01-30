@@ -17,7 +17,7 @@ export class ViewQuiziesComponent implements OnInit {
   constructor(private _quize:QuizeService) { }
 
   ngOnInit(): void {
-    this._quize.quizies().subscribe(
+    this._quize.quiziesAdmin().subscribe(
       (data:any)=>{
         this.quizies=data;
         console.log(data);
