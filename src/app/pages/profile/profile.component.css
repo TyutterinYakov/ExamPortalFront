@@ -1,6 +1,6 @@
 .profile-image{
-    max-width: 150px;
-    max-height: 150px;
+    width: 150px;
+    height: 150px;
     border: 2px solid rgb(68, 67, 187);
     border-radius: 50%;
 }
@@ -16,3 +16,6 @@
     border: 0.5px solid rgb(175, 175, 190);
     padding: 14px;
 }
+.file-input {
+    display: none;
+  }

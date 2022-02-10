@@ -5,8 +5,18 @@
             <div class="container">
 
                 <div class="container text-center">
-                    <img src="../../../assets/profile.png" alt="" class="profile-image">
+                    <img [src]="profileImage" alt="" class="profile-image">
                     <h1 class="mt15">{{user.firstName}} {{user.lastName}}</h1>
+                </div>
+                <input type="file" class="file-input"
+                (change)="onFileSelected($event)" #fileUpload>
+         
+                 <div class="file-upload text-center">
+                        {{fileName || "Выберите фото профиля"}}
+                    <button mat-mini-fab color="primary" class="upload-btn"
+                    (click)="fileUpload.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
                 </div>
                 <!-- {{user | json}} -->
                 <div class="row">

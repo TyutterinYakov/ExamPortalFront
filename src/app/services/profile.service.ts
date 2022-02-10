@@ -17,4 +17,10 @@ export class ProfileService {
   updateUser(user: any) {
     return this.http.put(`${baseUrl}/user/`, user);
   }
+  updateImageProfile(formData: FormData) {
+    return this.http.post(`${baseUrl}/user/image`, formData);
+  }
+  getProfileImage() {
+    return this.http.get(`${baseUrl}/user/image`, {responseType:'blob'});
+  }
 }
