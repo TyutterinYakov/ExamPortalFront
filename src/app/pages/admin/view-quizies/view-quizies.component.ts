@@ -12,7 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class ViewQuiziesComponent implements OnInit {
 
-  quizies = null;
+  quizies=null;
+  // quizies = [{
+  //   quizeId:'',
+  //   title:'',
+  //   description:'',
+  //   active:'',
+  //   categoryDto: {
+  //     title:''
+  //   }
+  // }];
 
   constructor(private _quize:QuizeService) { }
 

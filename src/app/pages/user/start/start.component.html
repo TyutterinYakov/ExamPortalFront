@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-8">
                 <ng-container *ngIf="questions">
-                    <h1>Вы решаете тест: <strong>{{questions[0].quize.title}}</strong></h1>
+                    <h1>Вы решаете тест: <strong>{{questions[0].quizeDto.title}}</strong></h1>
                 </ng-container>
                 
                 <mat-card *ngFor="let q of questions; let i=index" class="mt5">
@@ -91,7 +91,7 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="ml15">
-                    <h3>Правильных ответов: {{correctAnswer.validQustion}}</h3>
+                    <h3>Правильных ответов: {{correctAnswer.validQuestion}}</h3>
                     <h3>Пропущенных вопросов: {{correctAnswer.skipQuestion}}</h3>
                     <h3>Ошибок в вопросах: {{correctAnswer.invalidQuestion}}</h3>
                     <h3>Количество баллов: {{correctAnswer.countPoints}}</h3>

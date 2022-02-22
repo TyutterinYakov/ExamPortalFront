@@ -12,22 +12,22 @@ export class ExamResultService {
 
 
   getStatisticQuize(quizeId: number) {
-    return this._http.get(`${baseUrl}/exam/statistic/${quizeId}`);
+    return this._http.get(`${baseUrl}/api/exam/result/${quizeId}`);
   }
 
   checkUserResult(quizeId: number) {
-    return this._http.get(`${baseUrl}/exam/checkUserResult/${quizeId}`);
+    return this._http.get(`${baseUrl}/api/exam/user-result/${quizeId}`);
   }
 
   deleteExamResult(answerId:number) {
-    return this._http.delete(`${baseUrl}/exam/examResult/${answerId}`);
+    return this._http.delete(`${baseUrl}/api/exam/result/${answerId}`);
   }
 
   public evalQuize(questions:any){
-    return this._http.post(`${baseUrl}/exam/eval-quize`, questions);
+    return this._http.post(`${baseUrl}/api/exam/user-result/submit`, questions);
   }
 
   checkAllUserResult(){
-    return this._http.get(`${baseUrl}/exam/checkAllUserResult`);
+    return this._http.get(`${baseUrl}/api/exam/user-result/all`);
   }
 }

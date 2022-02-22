@@ -13,26 +13,26 @@ export class QuestionService {
 
 
   public getQuestionsOfQuize(id:any){
-    return this._http.get(`${baseUrl}/question/quize/all/${id}`);
+    return this._http.get(`${baseUrl}/api/quizies/${id}/questions/any`);
   }
   public getQuestionsOfQuizeTest(id:any){
-    return this._http.get(`${baseUrl}/question/quize/${id}`);
+    return this._http.get(`${baseUrl}/api/quizies/${id}/questions`);
   }
 
   addQuestion(question: any) {
-    return this._http.post(`${baseUrl}/question/`, question);
+    return this._http.post(`${baseUrl}/api/quizies/questions`, question);
   }
 
   deleteQuestion(questionId: any) {
-    return this._http.delete(`${baseUrl}/question/${questionId}`);
+    return this._http.delete(`${baseUrl}/api/quizies/questions/${questionId}`);
   }
 
 
   public getQuestion(questionId:any){
-    return this._http.get(`${baseUrl}/question/${questionId}`);
+    return this._http.get(`${baseUrl}/api/quizies/questions/${questionId}/any`);
   }
 
   updateQuestion(question: any) {
-    return this._http.put(`${baseUrl}/question/`, question);
+    return this._http.put(`${baseUrl}/api/quizies/questions`, question);
   }
 }

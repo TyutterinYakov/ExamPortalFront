@@ -2,10 +2,10 @@
     <mat-list>
         <mat-card-title>Результаты тестов</mat-card-title>
         <mat-list-item *ngFor="let s of results">
-            <div mat-line>Тест: {{s.quize.title}}</div>
-            <div mat-line>Категория: {{s.quize.category.title}}</div>
-            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.quize.maxMarks}}</div>
-            <div mat-line>Правильных ответов: {{s.validQustion}}</div>
+            <div mat-line>Тест: {{s.quizeDto.title}}</div>
+            <div mat-line>Категория: {{s.quizeDto.categoryDto.title}}</div>
+            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.quizeDto.maxMarks}}</div>
+            <div mat-line>Правильных ответов: {{s.validQuestion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
             <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
             <div mat-line *ngFor="let q of s.questionsAndGivenAnswer | keyvalue; let i=index">

@@ -22,8 +22,7 @@ export class UpdateQuizComponent implements OnInit {
     title:'',
     description:'',
     maxMarks:'',
-    countOfQuestion:'',
-    category:this.categoryData,
+    categoryDto:this.categoryData,
     active:'',
 
   }
@@ -45,7 +44,7 @@ export class UpdateQuizComponent implements OnInit {
     )
     this.quizeId = this._route.snapshot.params['quizeId'];
     // alert(this.quizeId);
-    this._quize.getQuizeAdmin(this.quizeId).subscribe(
+    this._quize.getQuizeAny(this.quizeId).subscribe(
       (data:any)=>{
         this.quize=data;
         console.log(this.quize);
@@ -61,7 +60,7 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   formSubmit(){
-    if(this.quize.title.trim()=='' || this.quize.title==null || this.quize.maxMarks==null || this.quize.countOfQuestion==null ){
+    if(this.quize.title.trim()=='' || this.quize.title==null || this.quize.maxMarks==null){
       this._snack.open("Введите обязательные поля!", "", {
         duration:1000
       })

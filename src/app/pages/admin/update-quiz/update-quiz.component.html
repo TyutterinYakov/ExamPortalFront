@@ -44,19 +44,6 @@
                                     >
                                 </mat-form-field>
                             </div>
-                            <div class="col-md-6">
-                                    <mat-form-field class="w100" appearance="outline">
-                                        <mat-label>Вопросы</mat-label>
-                                        <input 
-                                        required
-                                        type="number" 
-                                        placeholder="Введите количество вопросов" 
-                                        matInput
-                                        [(ngModel)]="quize.countOfQuestion"
-                                        name="countOfQuestion"
-                                        >
-                                    </mat-form-field>
-                            </div>
                         </div>
                         
                         <mat-slide-toggle
@@ -71,7 +58,7 @@
                         <br/>
                         <mat-form-field appearance="fill" class="mt15 w100">
                             <mat-label>Категория</mat-label>
-                            <mat-select  name="category" [(ngModel)]="quize.category.categoryId" required>
+                            <mat-select  name="category" [(ngModel)]="quize.categoryDto.categoryId" required>
                               <mat-option *ngFor="let c of categories" [value]="c.categoryId">
                                 {{c.title}}
                               </mat-option>

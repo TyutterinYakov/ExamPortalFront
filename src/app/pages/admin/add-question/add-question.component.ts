@@ -32,7 +32,7 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizeId = this._route.snapshot.params['id'];
-    this._quize.getQuize(this.quizeId).subscribe(
+    this._quize.getQuizeAny(this.quizeId).subscribe(
       (data:any)=>{
         this.question.quize=data;
 

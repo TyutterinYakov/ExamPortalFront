@@ -31,7 +31,7 @@ export class StartComponent implements OnInit {
 
   correctAnswer={
     countPoints:'',
-    validQustion:'',
+    validQuestion:'',
     invalidQuestion:'',
     skipQuestion:''
   };

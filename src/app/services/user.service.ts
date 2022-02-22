@@ -14,7 +14,7 @@ export class UserService {
 
 public addUser(user:any)
 {
-  return this.http.post('http://localhost:8080/user/', user);
+  return this.http.post(`${baseUrl}/api/user/`, user);
 
 
 }

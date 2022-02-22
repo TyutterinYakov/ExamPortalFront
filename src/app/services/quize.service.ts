@@ -12,36 +12,37 @@ export class QuizeService {
   constructor(private _http:HttpClient) { }
 
   quizies(){
-    return this._http.get(`${baseUrl}/quize/`);
+    return this._http.get(`${baseUrl}/categories/quizies`);
   }
   quiziesAdmin(){
-    return this._http.get(`${baseUrl}/quize/any`);
+    return this._http.get(`${baseUrl}/categories/quizies/any`);
   }
 
   public addQuize(quize:any){
-    return this._http.post(`${baseUrl}/quize/`, quize);
+    return this._http.post(`${baseUrl}/categories/quizies`, quize);
   }
 
   deleteQuize(id: any) {
-    return this._http.delete(`${baseUrl}/quize/${id}`);
+    return this._http.delete(`${baseUrl}/categories/quizies/${id}`);
   }
 
   getQuize(quizeId: any){
-    return this._http.get(`${baseUrl}/quize/${quizeId}`);
+    return this._http.get(`${baseUrl}/categories/quizies/${quizeId}`);
   }
 
   updateQuize(quize: any) {
-    return this._http.put(`${baseUrl}/quize/`, quize);
+    return this._http.put(`${baseUrl}/categories/quizies/`, quize);
   }
 
   getQuizeByCategoryUser(categoryId:any){
-    return this._http.get(`${baseUrl}/quize/category/${categoryId}`);
+    return this._http.get(`${baseUrl}/categories/${categoryId}/quizies`);
   }
   getQuizeByCategory(categoryId:any){
-    return this._http.get(`${baseUrl}/quize/category/any/${categoryId}`);
+    return this._http.get(`${baseUrl}/categories/${categoryId}/quizies/any`);
   }
-  getQuizeAdmin(quizeId: number) {
-    return this._http.get(`${baseUrl}/quize/any/${quizeId}`);
+
+  getQuizeAny(quizeId: any){
+    return this._http.get(`${baseUrl}/categories/quizies/${quizeId}/any`);
   }
 
 }

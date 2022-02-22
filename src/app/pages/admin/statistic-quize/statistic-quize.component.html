@@ -4,7 +4,7 @@
         <mat-list-item *ngFor="let s of statistics" class="mb15">
             <div mat-line>ИФ: {{s.user.firstName}} {{s.user.lastName}}</div>
             <div mat-line>Количество баллов: {{s.countPoints}}</div>
-            <div mat-line>Правильных ответов: {{s.validQustion}}</div>
+            <div mat-line>Правильных ответов: {{s.validQuestion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
             <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
             <div mat-line *ngFor="let q of s.questionsAndGivenAnswer | keyvalue; let i=index">

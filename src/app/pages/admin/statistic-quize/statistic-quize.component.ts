@@ -21,7 +21,7 @@ export class StatisticQuizeComponent implements OnInit {
         lastName:''
       },
       countPoints:'',
-      validQustion:'',
+      validQuestion:'',
       invalidQuestion:'',
       skipQuestion:'',
       questionsAndGivenAnswer: this.resultMap,

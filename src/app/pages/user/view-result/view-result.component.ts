@@ -12,19 +12,16 @@ export class ViewResultComponent implements OnInit {
   resultMap:Map<String, Map<String, String>> = new Map<String, Map<String, String>>();
   results=[
     {
-      user: {
-        firstName:'',
-        lastName:''
-      },
+   
       countPoints:'',
-      validQustion:'',
+      validQuestion:'',
       invalidQuestion:'',
       skipQuestion:'',
       questionsAndGivenAnswer: this.resultMap,
       answerId:'',
-      quize:{
+      quizeDto:{
         title:'',
-        category:{
+        categoryDto:{
           title:''
         },
         maxMarks:''

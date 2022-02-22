@@ -15,13 +15,13 @@ public loginStatusSubject = new Subject<boolean>();
   constructor(private http:HttpClient) {}
     
   public getCurrentUser(){
-    return this.http.get(`${baseUrl}/current-user`);
+    return this.http.get(`${baseUrl}/api/auth/current-user`);
   }
 
   //Создание токена
     public generateToken(loginData:any){
       
-      return this.http.post(`${baseUrl}/generate-token`, loginData);
+      return this.http.post(`${baseUrl}/api/auth/generate-token`, loginData);
 
     }
 
@@ -46,7 +46,7 @@ public loginStatusSubject = new Subject<boolean>();
     public logout(){
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-       this.http.post(`${baseUrl}/logout`, LoginService);
+       this.http.post(`${baseUrl}/api/auth/logout`, LoginService);
 
       return true;
     }

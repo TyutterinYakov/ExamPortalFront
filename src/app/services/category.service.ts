@@ -11,23 +11,23 @@ export class CategoryService {
 
   //load list category
   public categories(){
-    return this._http.get(`${baseUrl}/category/`)
+    return this._http.get(`${baseUrl}/api/categories`)
   }
 
   public addCategory(category:any){
-    return this._http.post(`${baseUrl}/category/`, category);
+    return this._http.post(`${baseUrl}/api/categories`, category);
   }
 
   public getCategory(category:any){
-    return this._http.get(`${baseUrl}/category/${category}`, category);
+    return this._http.get(`${baseUrl}/api/categories/${category}`,);
   }
 
   deleteCategory(categoryId: any) {
-    return this._http.delete(`${baseUrl}/category/${categoryId}`);
+    return this._http.delete(`${baseUrl}/api/categories/${categoryId}`);
   }
 
   updateCategory(category:any) {
-    return this._http.put(`${baseUrl}/category/`, category);
+    return this._http.put(`${baseUrl}/api/categories`, category);
   }
 
 
