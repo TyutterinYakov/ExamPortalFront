@@ -10,20 +10,19 @@ import Swal from 'sweetalert2';
 })
 export class UpdateCategoryComponent implements OnInit {
   category={
-    categoryId:'',
+    id:'',
     title:'',
     description:'',
 
   };
-  categoryId=0;
+  id=0;
   constructor(private _route:ActivatedRoute, private _category:CategoryService, private router:Router) { }
 
   ngOnInit(): void {
-    this.categoryId = this._route.snapshot.params['categoryId'];
-    console.log();
+    this.id = this._route.snapshot.params['categoryId'];
 
 
-    this._category.getCategory(this.categoryId).subscribe(
+    this._category.getCategory(this.id).subscribe(
       (data:any)=>{
         this.category=data;
         console.log(this.category);

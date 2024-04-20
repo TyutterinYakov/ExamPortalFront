@@ -11,14 +11,13 @@
 
                 <!-- {{user | json}} -->
                 <form (ngSubmit)="formSubmit()">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Логин</mat-label>
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Почта</mat-label>
                     <input 
-                    required 
-                    [(ngModel)]="user.userName"
-                    name="userName"
-                    matInput placeholder="Введите логин">
-                    <mat-hint>Имя пользователя должно быть уникальным</mat-hint>
+                    required
+                    [(ngModel)]="user.email"
+                    name="email"
+                    type="email" matInput placeholder="Введите свою почту">
                   </mat-form-field>
                   <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Пароль</mat-label>
@@ -44,26 +43,8 @@
                     name="lastName"
                      matInput placeholder="Введите свою фамилию">
                   </mat-form-field>
-                  <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Почта</mat-label>
-                    <input 
-                    required
-                    [(ngModel)]="user.email"
-                    name="email"
-                    type="email" matInput placeholder="Введите свою почту">
-                  </mat-form-field>
-                  <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Номер</mat-label>
-                    <input 
-                    required
-                    type="number"
-                    [(ngModel)]="user.phone"
-                    name="phone"
-                    matInput placeholder="Введите свой телефон">
-                  </mat-form-field>
                   <div class="container text-center">
                       <button type="submit" mat-raised-button color="primary">Зарегистрироваться</button>
-                    <button mat-raised-button color="warn" class="ml15">Очистить</button>
                 </div>
                 </form>
               </mat-card>

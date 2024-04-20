@@ -23,10 +23,6 @@
                     <div class="col-md-10 offset-md-1">
                         <table class="table text-center">
                             <tr>
-                                <td>Логин</td>
-                                <td>{{user.userName}}</td>
-                            </tr>
-                            <tr>
                                 <td>Имя</td>
                                 <td>{{user.firstName}}</td>
                             </tr>
@@ -35,20 +31,14 @@
                                 <td>{{user.lastName}}</td>
                             </tr>
                             <tr>
-                                <td>Номер телефона</td>
-                                <td >{{user.phone}}</td>
-                            </tr>
-                            <tr>
                                 <td>Почта</td>
                                 <td >{{user.email}}</td>
                             </tr>
                             <tr *ngIf="user.enabled">
-                                
                                 <td>Статус</td>
                                 <td >Активный</td>
                             </tr>
                             <tr *ngIf="!user.enabled">
-                                
                                 <td>Статус</td>
                                 <td >Заблокированный</td>
                             </tr>

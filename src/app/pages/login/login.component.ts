@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
 
   loginData={
-    userName:'',
+    email:'',
     password:'',
   }
   constructor(private snack:MatSnackBar, private login:LoginService, private router:Router) { }
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
   formSubmit(){
     console.log("login btn click");
-    if(this.loginData.userName.trim()==''||this.loginData.password.trim()==''){
+    if(this.loginData.email.trim()==''||this.loginData.password.trim()==''){
       this.snack.open("Не введено имя пользователя или пароль","",{
         duration:3000,
       });

@@ -6,8 +6,8 @@
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>
             <mat-card-actions>
-                <button mat-raised-button color="primary" routerLink="/admin/category/update/{{c.categoryId}}">Обновить</button>
-                <button mat-raised-button color="warn" (click)="deleteCategory(c.categoryId)" >Удалить</button>
+                <button mat-raised-button color="primary" routerLink="/admin/categories/update/{{c.id}}">Обновить</button>
+                <button mat-raised-button color="warn" (click)="deleteCategory(c.id)" >Удалить</button>
             </mat-card-actions>
             <mat-divider></mat-divider>
         </mat-list-item>

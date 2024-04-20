@@ -12,15 +12,15 @@ export class ProfileService {
   constructor(private http:HttpClient, private login:LoginService) { }
 
   removeUser() {
-    return this.http.delete(`${baseUrl}/api/user`);
+    return this.http.delete(`${baseUrl}/api/users`);
   }
   updateUser(user: any) {
-    return this.http.put(`${baseUrl}/api/user`, user);
+    return this.http.put(`${baseUrl}/api/users`, user);
   }
   updateImageProfile(formData: FormData) {
-    return this.http.post(`${baseUrl}/api/user/image`, formData);
+    return this.http.put(`${baseUrl}/api/users/image-profile-update`, formData);
   }
   getProfileImage() {
-    return this.http.get(`${baseUrl}/api/user/image`, {responseType:'blob'});
+    return this.http.get(`${baseUrl}/api/users/image-profile`, {responseType:'blob'});
   }
 }

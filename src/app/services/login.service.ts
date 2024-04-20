@@ -15,13 +15,13 @@ public loginStatusSubject = new Subject<boolean>();
   constructor(private http:HttpClient) {}
     
   public getCurrentUser(){
-    return this.http.get(`${baseUrl}/api/auth/current-user`);
+    return this.http.get(`${baseUrl}/api/users/me`);
   }
 
   //Создание токена
     public generateToken(loginData:any){
       
-      return this.http.post(`${baseUrl}/api/auth/generate-token`, loginData);
+      return this.http.post(`${baseUrl}/api/auth/login`, loginData);
 
     }
 

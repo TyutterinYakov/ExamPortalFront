@@ -117,7 +117,7 @@ const routes: Routes = [
         component:UpdateProfileComponent,
       },
       {
-        path:'category/update/:categoryId',
+        path:'categories/update/:categoryId',
         component: UpdateCategoryComponent
       }
     ],

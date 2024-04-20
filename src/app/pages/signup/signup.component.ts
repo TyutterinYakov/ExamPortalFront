@@ -13,46 +13,45 @@ export class SignupComponent implements OnInit {
   constructor(private userService:UserService, private snack:MatSnackBar) { }
 
 public user={
-  userName:'',
   password:'',
   firstName:'',
   lastName:'',
-  email:'',
-  phone:''
+  email:''
+}
+
+public ErrorResponse = {
+  message:''
 }
 
   ngOnInit(): void {
   }
 
 
-  formSubmit()
-  {
+  formSubmit() {
     console.log(this.user)
-    if(this.user.userName=='' || this.user.userName==null){
-      this.snack.open('Введите логин','',{
+    if (this.user.email==''){
+      this.snack.open('Введите почту','',{
         duration:1000, 
 
 
       });
       return;
     }
-//validate
-//addUser
-this.userService.addUser(this.user).subscribe(
-  (data: any)=>{
-    //success
-    console.log(data);
-    Swal.fire('Добро пожаловать, '+data.firstName, 'Регистрация прошла успешно');
-  },
-  (error)=>{
-    //error
-    console.log(error);
-    this.snack.open('Пользователь с таким ником уже зарегистрирован','',{
-      duration: 2000,
-    })
-  }
-);
-
-  }
+  //validate
+  //addUser
+  this.userService.addUser(this.user).subscribe({
+    next: (v) => {
+      if (v == null) {
+        Swal.fire('Добро пожаловать, '+this.user.firstName, 'Регистрация прошла успешно');
+      } else {
+        console.log(v)
+        this.snack.open('Пользователь с такой почтой уже зарегистрирован','',{
+          duration: 2000,
+        })
+        }
+      }
+    }
+  );
+}
 
 }
