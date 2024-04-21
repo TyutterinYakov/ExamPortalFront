@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class UpdateQuizComponent implements OnInit {
   categoryData={
-    categoryId:'',
+    id:'',
     title:'',
     description:''
   }
@@ -21,8 +21,7 @@ export class UpdateQuizComponent implements OnInit {
   quize={
     title:'',
     description:'',
-    maxMarks:'',
-    categoryDto:this.categoryData,
+    categoryId:this.categoryData.id,
     active:'',
 
   }
@@ -60,7 +59,7 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   formSubmit(){
-    if(this.quize.title.trim()=='' || this.quize.title==null || this.quize.maxMarks==null){
+    if(this.quize.title.trim()=='' || this.quize.title==null){
       this._snack.open("Введите обязательные поля!", "", {
         duration:1000
       })

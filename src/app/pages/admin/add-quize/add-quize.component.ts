@@ -17,7 +17,7 @@ export class AddQuizeComponent implements OnInit {
 
 
   categoryData={
-    categoryId:'',
+    id:'',
     title:'',
     description:''
   }
@@ -25,8 +25,7 @@ export class AddQuizeComponent implements OnInit {
   quize={
     title:'',
     description:'',
-    maxMarks:'',
-    categoryDto:this.categoryData,
+    categoryId:this.categoryData.id,
     active:'',
 
   }
@@ -52,7 +51,10 @@ export class AddQuizeComponent implements OnInit {
   }
 
   formSubmit(){
-    if(this.quize.title.trim()=='' || this.quize.title==null || this.quize.maxMarks==null ){
+    if (this.quize.active == null || this.quize.active == '') {
+      this.quize.active = 'false';
+    }
+    if(this.quize.title.trim()=='' || this.quize.title==null){
       this._snack.open("Введите обязательные поля!", "", {
         duration:1000
       })

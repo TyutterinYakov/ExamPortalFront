@@ -30,18 +30,7 @@
                             [(ngModel)]="quize.description"
                             ></textarea>
                         </mat-form-field>
-                        <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Баллы</mat-label>
-                            <input 
-                            required
-                            type="number" 
-                            placeholder="Введите максимальное количество баллов" 
-                            matInput
-                            [(ngModel)]="quize.maxMarks"
-                            name="maxMarks"
-                            >
-                        </mat-form-field>
-                        
+                    
                         <mat-slide-toggle
                             color="primary"
                             [checked]="false"
@@ -54,8 +43,8 @@
                         <br/>
                         <mat-form-field appearance="fill" class="mt15 w100">
                             <mat-label>Категория</mat-label>
-                            <mat-select  name="categoryDto" [(ngModel)]="quize.categoryDto" required>
-                              <mat-option *ngFor="let c of categories" [value]="c">
+                            <mat-select  name="categoryDto" [(ngModel)]="quize.categoryId" required>
+                              <mat-option *ngFor="let c of categories" [value]="c.id">
                                 {{c.title}}
                               </mat-option>
                             </mat-select>
