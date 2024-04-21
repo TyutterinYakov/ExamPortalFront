@@ -50,7 +50,11 @@ const routes: Routes = [
       {
         path:'statistic',
         component:ViewResultComponent
-      }
+      },
+      {
+        path:'category',
+        component:LoadQuizComponent
+      },
     ]
   },
   {

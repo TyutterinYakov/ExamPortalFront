@@ -16,7 +16,7 @@ export class InstructionsComponent implements OnInit {
     description:'',
     countOfQuestion:'',
     maxMarks:'',
-
+    time:0
   };
   constructor(private _route:ActivatedRoute, private _quize:QuizeService, private _router:Router) { }
 

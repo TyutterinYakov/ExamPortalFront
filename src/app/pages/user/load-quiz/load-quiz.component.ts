@@ -25,7 +25,7 @@ quizies:any;
       console.log(this.catId);
     
 
-    if(this.catId==0){
+    if(this.catId==undefined){
     this._quize.quizies().subscribe(
       (data:any)=>{
         this.quizies=data;

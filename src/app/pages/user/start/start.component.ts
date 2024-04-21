@@ -42,45 +42,60 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizeId = this._route.snapshot.params['quizeId'];
-    this._exam.checkUserResult(this.quizeId).subscribe(
-      (data)=>{
-        this.resultCheck=data;
-        console.log(data);
+    // this._exam.checkUserResult(this.quizeId).subscribe(
+    //   (data)=>{
+    //     this.resultCheck=data;
+    //     console.log(data);
         
-        if(this.resultCheck.length>0){
+    //     if(this.resultCheck.length>0){
 
-            this.router.navigate(['/user/category/0']).then(()=>{
-              Swal.fire("Ошибка!", "Вы уже решали этот тест");
-            });
-        } else {
+    //         this.router.navigate(['/user/category']).then(()=>{
+    //           Swal.fire("Ошибка!", "Вы уже решали этот тест");
+    //         });
+    //     } else {
           
           this.preventBackButton();
           this.user = this._login.getUser();
           this.loadQuestions();
-        }
-      },
-      (error)=>{
-        console.log(error);
-        this.router.navigate(['/user/category/0']).then(()=>{
-          Swal.fire("Ошибка!", "В данный момент решение недоступно");
-        });
+        // }
+    //   },
+    //   (error)=>{
+    //     console.log(error);
+    //     this.router.navigate(['/user/category']).then(()=>{
+    //       Swal.fire("Ошибка!", "В данный момент решение недоступно");
+    //     });
         
-      }
-    )
+    //   }
+    // )
   }
 
   loadQuestions(){
     this._question.getQuestionsOfQuizeTest(this.quizeId).subscribe(
       (data:any)=>{
         this.questions=data;
+        console.log(data);
         if(this.questions.length<1){
-            this.router.navigate(['/user/category/0']).then((e)=>{
+            this.router.navigate(['/user/category']).then((e)=>{
               Swal.fire("Ошибка", "В этом тесте нет вопросов");
             });
         } else {
-        this.questionLength=this.questions.length;
-        this.timer = this.questionLength*2*60;
-        console.log("Length "+this.questionLength);
+          for (let i = 0; i < this.questions.length; i++) {
+            for (let j = 0; j < this.questions[i].answers.length; j++) {
+              if (j == 0) {
+                this.questions[i].option1 = this.questions[i].answers[j].reply;
+              }
+              if (j == 1) {
+                this.questions[i].option2 = this.questions[i].answers[j].reply;
+              }
+              if (j == 2) {
+                this.questions[i].option3 = this.questions[i].answers[j].reply;
+              }
+              if (j == 3) {
+                this.questions[i].option4 = this.questions[i].answers[j].reply;
+              }
+            }
+        }
+        this.timer = this.questions[0].quiz.time;
         
         this.questions.forEach((q:any) => {
           q['givenAnswer']='';
@@ -123,8 +138,6 @@ export class StartComponent implements OnInit {
   }
   evalQuize() {
     this.isSubmit=true;
-
-
         this._exam.evalQuize(this.questions).subscribe(
           (data:any)=>{
             this.correctAnswer=data;

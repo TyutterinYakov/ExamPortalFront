@@ -16,7 +16,7 @@ export class QuestionService {
     return this._http.get(`${baseUrl}/api/admin/quizzes/${id}/questions`);
   }
   public getQuestionsOfQuizeTest(id:any){
-    return this._http.get(`${baseUrl}/api/quizies/${id}/questions`);
+    return this._http.get(`${baseUrl}/api/quizzes/${id}/questions`);
   }
 
   addQuestion(question: any) {

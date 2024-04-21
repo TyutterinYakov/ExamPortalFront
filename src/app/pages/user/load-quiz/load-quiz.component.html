@@ -10,7 +10,7 @@
                             {{q.title}}
                         </mat-card-title>
                         <mat-card-subtitle>
-                            {{q.categoryDto.title}}
+                            {{q.category.title}}
                         </mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
@@ -20,9 +20,9 @@
                     </mat-card-content>
                     <mat-card-actions>
                         <button mat-raised-button color="primary">Подробнее</button>
-                        <button mat-raised-button color="warn" [routerLink]="'/user/instructions/'+q.quizeId">Начать</button>
+                        <button mat-raised-button color="warn" [routerLink]="'/user/instructions/'+q.id">Начать</button>
                         <button mat-stroked-button color="warn">Баллов: {{q.maxMarks}}</button>
-                        <button mat-stroked-button color="warn">Время: {{q.countOfQuestion}} мин.</button>
+                        <button mat-stroked-button color="warn">Время: {{q.time / 60}} мин.</button>
                       </mat-card-actions>
                 </mat-card>
             </div>
