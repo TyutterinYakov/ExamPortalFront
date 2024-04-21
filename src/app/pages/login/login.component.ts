@@ -32,9 +32,6 @@ export class LoginComponent implements OnInit {
     //Генерация токена
     this.login.generateToken(this.loginData).subscribe(
       (data:any)=>{
-
-
-
         this.login.loginUser(data.token);
 
         this.login.getCurrentUser().subscribe(
@@ -69,15 +66,10 @@ export class LoginComponent implements OnInit {
               // this.login.loginStatusSubject.next(true);
               
             } else {
-            this.login.logout();
-
+              this.login.logout();
             }
-            
-
           }
         )
-
-
       },
       (error)=>{
         console.log("Error generate token");

@@ -28,8 +28,8 @@ export class ViewQuizeQuestionsComponent implements OnInit {
 
     this._question.getQuestionsOfQuize(this.quizeId).subscribe(
       (data:any)=>{
+        console.log(data)
         this.questions=data;
-        console.log(this.questions);
       },
       (error)=>{
         Swal.fire("Ошибка!", "Попробуйте позже");

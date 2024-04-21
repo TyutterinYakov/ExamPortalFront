@@ -2,7 +2,7 @@
         <div class="row mt15">
             <div class="col-md-12">
                 
-                    <h1>Добавление вопроса в {{question.quize.title}}</h1>
+                    <h1>Добавление вопроса в {{question.quiz.title}}</h1>
                     
                 <mat-card>
                     <mat-card-header>
@@ -64,6 +64,24 @@
                                     </mat-form-field>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <mat-form-field class="w100" appearance="outline">
+                                        <mat-label>Время на ответ</mat-label>
+                                        <input type="number" matInput
+                                        placeholder="Время на ответ"
+                                        name="time" 
+                                        [(ngModel)]="question.time">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="w100" appearance="outline">
+                                        <mat-label>Количество баллов</mat-label>
+                                        <input type="number" matInput
+                                        placeholder="Количество баллов"
+                                        name="marks" 
+                                        [(ngModel)]="question.marks">
+                                    </mat-form-field>
+                                </div>
 
 
                             </div>
@@ -85,5 +103,4 @@
                 </mat-card>
             </div>
         </div>
-        {{question | json}}
 </div>

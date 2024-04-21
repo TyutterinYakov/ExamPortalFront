@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
 
@@ -13,26 +13,34 @@ export class QuestionService {
 
 
   public getQuestionsOfQuize(id:any){
-    return this._http.get(`${baseUrl}/api/quizies/${id}/questions/any`);
+    return this._http.get(`${baseUrl}/api/admin/quizzes/${id}/questions`);
   }
   public getQuestionsOfQuizeTest(id:any){
     return this._http.get(`${baseUrl}/api/quizies/${id}/questions`);
   }
 
   addQuestion(question: any) {
-    return this._http.post(`${baseUrl}/api/quizies/questions`, question);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+  let options = { headers: headers };
+    console.log(question)
+    return this._http.post(`${baseUrl}/api/admin/quizzes/questions`, question, options);
   }
 
   deleteQuestion(questionId: any) {
-    return this._http.delete(`${baseUrl}/api/quizies/questions/${questionId}`);
+    return this._http.delete(`${baseUrl}/api/admin/quizzes/questions/${questionId}`);
   }
 
 
   public getQuestion(questionId:any){
-    return this._http.get(`${baseUrl}/api/quizies/questions/${questionId}/any`);
+    return this._http.get(`${baseUrl}/api/admin/quizzes/questions/${questionId}`);
   }
 
-  updateQuestion(question: any) {
-    return this._http.put(`${baseUrl}/api/quizies/questions`, question);
+  updateQuestion(question: any, questionId:any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+  let options = { headers: headers };
+  console.log(question)
+    return this._http.put(`${baseUrl}/api/admin/quizzes/questions/${questionId}`, question, options);
   }
 }
