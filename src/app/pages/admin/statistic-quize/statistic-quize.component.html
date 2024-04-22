@@ -3,22 +3,24 @@
         <mat-card-title>Результаты теста</mat-card-title>
         <mat-list-item *ngFor="let s of statistics" class="mb15">
             <div mat-line>ИФ: {{s.user.firstName}} {{s.user.lastName}}</div>
-            <div mat-line>Количество баллов: {{s.countPoints}}</div>
+            <div mat-line>Тест: {{s.quizTitle}}</div>
+            <div mat-line>Категория: {{s.categoryTitle}}</div>
+            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.maxMarks}}</div>
             <div mat-line>Правильных ответов: {{s.validQuestion}}</div>
             <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
             <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
-            <div mat-line *ngFor="let q of s.questionsAndGivenAnswer | keyvalue; let i=index">
+            <div mat-line *ngFor="let q of s.examAnswers; let i=index">
                 <hr>
                 <p class="width50">
                     <strong>#{{i+1}}</strong>
-                    <span class="ml15" [innerHTML]="q.key"></span>
-                    <i *ngFor="let ans of q.value | keyvalue">
-                        Дан ответ: {{ans.key}} 
-                            <strong *ngIf="ans.key==ans.value"> (Верно)</strong>
-                            <strong *ngIf="ans.key!=ans.value"> (Неверно)</strong>
+                    <span class="ml15"></span>
+                    <i>
+                        Дан ответ: {{q.givenAnswer}} 
+                            <strong *ngIf="q.givenAnswer==q.answer"> (Верно)</strong>
+                            <strong *ngIf="q.givenAnswer!=q.answer"> (Неверно)</strong>
                         
                         <br>
-                        Правильный ответ: {{(ans.value)}}
+                        Правильный ответ: {{(q.answer)}}
                     </i>
                     <br>
                 </p>
@@ -28,7 +30,7 @@
             <mat-divider></mat-divider>
 
             <div>
-                <button mat-stroked-button color="warn" (click)="removeResult(s.answerId)">Удалить результат</button>
+                <button mat-stroked-button color="warn" (click)="removeResult(s.id)">Удалить результат</button>
             </div>
         </mat-list-item>
     </mat-list>

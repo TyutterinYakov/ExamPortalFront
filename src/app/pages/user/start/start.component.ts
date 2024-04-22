@@ -80,6 +80,7 @@ export class StartComponent implements OnInit {
             });
         } else {
           for (let i = 0; i < this.questions.length; i++) {
+            this.questions[i].questionId = this.questions[i].id;
             for (let j = 0; j < this.questions[i].answers.length; j++) {
               if (j == 0) {
                 this.questions[i].option1 = this.questions[i].answers[j].reply;
@@ -138,7 +139,8 @@ export class StartComponent implements OnInit {
   }
   evalQuize() {
     this.isSubmit=true;
-        this._exam.evalQuize(this.questions).subscribe(
+      console.log(this.questions);
+        this._exam.evalQuize(this.quizeId, this.questions).subscribe(
           (data:any)=>{
             this.correctAnswer=data;
             console.log(data);

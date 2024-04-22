@@ -12,7 +12,7 @@ export class ExamResultService {
 
 
   getStatisticQuize(quizeId: number) {
-    return this._http.get(`${baseUrl}/api/exam/result/${quizeId}`);
+    return this._http.get(`${baseUrl}/api/admin/exam/${quizeId}`);
   }
 
   checkUserResult(quizeId: number) {
@@ -20,14 +20,14 @@ export class ExamResultService {
   }
 
   deleteExamResult(answerId:number) {
-    return this._http.delete(`${baseUrl}/api/exam/result/${answerId}`);
+    return this._http.delete(`${baseUrl}/api/admin/exam/${answerId}`);
   }
 
-  public evalQuize(questions:any){
-    return this._http.post(`${baseUrl}/api/exam/user-result/submit`, questions);
+  public evalQuize(quizId:any, questions:any){
+    return this._http.post(`${baseUrl}/api/exam/submit/${quizId}`, questions);
   }
 
   checkAllUserResult(){
-    return this._http.get(`${baseUrl}/api/exam/user-result/all`);
+    return this._http.get(`${baseUrl}/api/exam/`);
   }
 }

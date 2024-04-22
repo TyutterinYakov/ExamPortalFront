@@ -16,16 +16,21 @@ export class StatisticQuizeComponent implements OnInit {
   resultMap:Map<String, Map<String, String>> = new Map<String, Map<String, String>>();
   statistics=[
     {
+      id:'',
       user: {
         firstName:'',
         lastName:''
       },
+      maxMarks:'',
       countPoints:'',
       validQuestion:'',
       invalidQuestion:'',
       skipQuestion:'',
       questionsAndGivenAnswer: this.resultMap,
       answerId:'',
+      quizTitle:'',
+      categoryTitle:'',
+      examAnswers:[{givenAnswer:'', answer:'', questionContent:''}]
     },
   ];
 
