@@ -16,7 +16,7 @@ export class ExamResultService {
   }
 
   checkUserResult(quizeId: number) {
-    return this._http.get(`${baseUrl}/api/exam/user-result/${quizeId}`);
+    return this._http.get(`${baseUrl}/api/exam/${quizeId}`);
   }
 
   deleteExamResult(answerId:number) {

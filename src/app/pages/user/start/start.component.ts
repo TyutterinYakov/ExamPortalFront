@@ -42,31 +42,31 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizeId = this._route.snapshot.params['quizeId'];
-    // this._exam.checkUserResult(this.quizeId).subscribe(
-    //   (data)=>{
-    //     this.resultCheck=data;
-    //     console.log(data);
+    this._exam.checkUserResult(this.quizeId).subscribe(
+      (data)=>{
+        this.resultCheck=data;
+        console.log(data);
         
-    //     if(this.resultCheck.length>0){
+        if(this.resultCheck == true){
 
-    //         this.router.navigate(['/user/category']).then(()=>{
-    //           Swal.fire("Ошибка!", "Вы уже решали этот тест");
-    //         });
-    //     } else {
+            this.router.navigate(['/user/category']).then(()=>{
+              Swal.fire("Ошибка!", "Вы уже решали этот тест");
+            });
+        } else {
           
           this.preventBackButton();
           this.user = this._login.getUser();
           this.loadQuestions();
-        // }
-    //   },
-    //   (error)=>{
-    //     console.log(error);
-    //     this.router.navigate(['/user/category']).then(()=>{
-    //       Swal.fire("Ошибка!", "В данный момент решение недоступно");
-    //     });
+        }
+      },
+      (error)=>{
+        console.log(error);
+        this.router.navigate(['/user/category']).then(()=>{
+          Swal.fire("Ошибка!", "В данный момент решение недоступно");
+        });
         
-    //   }
-    // )
+      }
+    )
   }
 
   loadQuestions(){
