@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
     )
   }
   updateLinkUser(){
-    if(this.login.getUserRole()=="ADMIN"){
+    if(this.login.getUserRole()=="ROLE_ADMIN"){
       this.router.navigate(['/admin/update']);
     } else {
       this.router.navigate(['/update']);

@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.login.getCurrentUser().subscribe(
           (user:any)=>{
             this.login.setUser(user);
+            console.log(user)
 
             //refirect admin
             
@@ -54,12 +55,12 @@ export class LoginComponent implements OnInit {
             // }
 
 
-            if(this.login.getUserRole()=="ADMIN"){
+            if(this.login.getUserRole()=='ROLE_ADMIN'){
               window.location.href='/admin';
               // this.router.navigate(['/admin']);
               // this.login.loginStatusSubject.next(true);
 
-            } else if(this.login.getUserRole()=="USER"){
+            } else if(this.login.getUserRole()=='ROLE_USER'){
               window.location.href='/user';
               // window.navigator.
               // this.router.navigate(['/user']);

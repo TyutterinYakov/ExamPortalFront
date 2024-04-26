@@ -26,7 +26,7 @@ export class UpdateProfileComponent implements OnInit {
     this.profile.updateUser(this.user).subscribe(
       (data)=>{
           Swal.fire("Удачно!", "Данные обновлены").then((e)=>{
-          if(this.login.getUserRole()=="ADMIN"){
+          if(this.login.getUserRole()=="ROLE_ADMIN"){
             this.router.navigate(['/admin/profile']);
           } else {
             this.router.navigate(['/user/profile']);

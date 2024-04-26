@@ -154,7 +154,9 @@ export class StartComponent implements OnInit {
   startTimer(){
     let winInterval:any = window.setInterval(()=>{
       if(this.timer<=0){
-        this.evalQuize();
+        if (!this.isSubmit) {
+          this.evalQuize();
+        }
         clearInterval(winInterval);
       } else {
         this.timer--;
