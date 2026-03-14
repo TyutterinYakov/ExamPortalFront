@@ -35,6 +35,14 @@
                     {{user.enabled ? 'Активный' : 'Заблокированный'}}
                 </td>
             </tr>
+            <tr>
+              <td>Должность</td>
+              <td>{{(user.positions == null || user.positions.length == 0) ? 'Должность отсутствует' : user.positions.join(', ')}}</td>
+            </tr>
+            <tr>
+              <td>Интересы</td>
+              <td>{{(user.interests == null || user.interests.length == 0) ? 'Интересы не добавлены' : user.interests.join(', ')}}</td>
+            </tr>
         </table>
     </div>
 </div>
