@@ -1,56 +1,40 @@
-<mat-card *ngIf="user"> 
-    <mat-card-title>Мой профиль</mat-card-title>
-    <mat-card-content>
-        <div class="bootstrap-wrapper">
-            <div class="container">
+<div class="profile-container" *ngIf="user">
+    <div class="profile-header">
+        <img [src]="profileImage" alt="Profile" class="profile-image">
+        <h1 class="profile-name">{{user.firstName}} {{user.lastName}}</h1>
 
-                <div class="container text-center">
-                    <img [src]="profileImage" alt="" class="profile-image">
-                    <h1 class="mt15">{{user.firstName}} {{user.lastName}}</h1>
-                </div>
-                <input type="file" class="file-input"
-                (change)="onFileSelected($event)" #fileUpload>
-         
-                 <div class="file-upload text-center">
-                        {{fileName || "Выберите фото профиля"}}
-                    <button mat-mini-fab color="primary" class="upload-btn"
+        <input type="file" class="file-input"
+               (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+            {{fileName || "Выберите фото профиля"}}
+            <button mat-mini-fab color="primary" class="upload-btn"
                     (click)="fileUpload.click()">
-                        <mat-icon>attach_file</mat-icon>
-                    </button>
-                </div>
-                <!-- {{user | json}} -->
-                <div class="row">
-                    <div class="col-md-10 offset-md-1">
-                        <table class="table text-center">
-                            <tr>
-                                <td>Имя</td>
-                                <td>{{user.firstName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Фамилия</td>
-                                <td>{{user.lastName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Почта</td>
-                                <td >{{user.email}}</td>
-                            </tr>
-                            <tr *ngIf="user.enabled">
-                                <td>Статус</td>
-                                <td >Активный</td>
-                            </tr>
-                            <tr *ngIf="!user.enabled">
-                                <td>Статус</td>
-                                <td >Заблокированный</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                <mat-icon>photo_camera</mat-icon>
+            </button>
         </div>
-        <!-- <mat-card-actions class="text-center">
-            <button mat-raised-button color="primary" (click)="updateLinkUser()">Изменить</button>
-            <button mat-raised-button color="warn" (click)="removeUser()">Удалить аккаунт</button>
-        </mat-card-actions> -->
+    </div>
 
-    </mat-card-content>
-</mat-card>
+    <div class="profile-info">
+        <table class="table">
+            <tr>
+                <td>Имя</td>
+                <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+                <td>Фамилия</td>
+                <td>{{user.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Почта</td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>Статус</td>
+                <td [ngClass]="user.enabled ? 'status-active' : 'status-blocked'">
+                    {{user.enabled ? 'Активный' : 'Заблокированный'}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
