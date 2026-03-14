@@ -26,7 +26,7 @@ export class ViewQuiziesComponent implements OnInit {
   constructor(private _quize:QuizeService) { }
 
   ngOnInit(): void {
-    this._quize.quiziesAdmin().subscribe(
+    this._quize.quiziesAdmin(0, 100).subscribe(
       (data:any)=>{
         this.quizies=data;
         console.log(data);
@@ -34,7 +34,7 @@ export class ViewQuiziesComponent implements OnInit {
       (error)=>{
         console.log(error);
         Swal.fire("Ошибка", "попробуйте позже");
-        
+
       }
     )
   }
@@ -52,18 +52,18 @@ export class ViewQuiziesComponent implements OnInit {
           (data:any)=>{
             window.location.reload();
           },
-            
+
           (error: any)=>{
             Swal.fire("Ошибка!", "Проблема на стороне сервера!");
             console.log(error);
-            
+
           }
-    
+
         );
-    
+
       }
     });
   }
-      
+
 
 }
