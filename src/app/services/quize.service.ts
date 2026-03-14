@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
 
@@ -14,8 +14,11 @@ export class QuizeService {
   quizies(){
     return this._http.get(`${baseUrl}/api/categories/quizzes`);
   }
-  quiziesAdmin(){
-    return this._http.get(`${baseUrl}/api/admin/categories/quizzes`);
+  quiziesAdmin(from:number, size:number){
+    const params = new HttpParams()
+      .set('from', from.toString())
+      .set('size', size.toString());
+    return this._http.get(`${baseUrl}/api/admin/categories/quizzes`, { params });
   }
 
   public addQuize(quize:any){
