@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-title>Сгенерировать тест</mat-card-title>
+    <!-- {{quize | json}} -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form (ngSubmit)="formSubmit()">
+
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Тема теста</mat-label>
+                            <input 
+                            required
+                            type="text" 
+                            placeholder="Введите тему теста для генерации" 
+                            name="topic"
+                            matInput
+                            [(ngModel)]="quize.topic">
+                        </mat-form-field>
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Сложность теста</mat-label>
+                            <input 
+                            required
+                            type="text" 
+                            placeholder="Введите сложность теста (высока, средняя и т.д.)" 
+                            name="difficulty"
+                            matInput
+                            [(ngModel)]="quize.difficulty">
+                        </mat-form-field>
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Количество вопросов в тесте</mat-label>
+                            <input 
+                            required
+                            type="number" 
+                            placeholder="Введите количество вопросов в тесте" 
+                            name="questionCount"
+                            matInput
+                            [(ngModel)]="quize.questionCount">
+                        </mat-form-field>
+                
+                        <br/>
+                        <mat-form-field appearance="fill" class="mt15 w100">
+                            <mat-label>Категория</mat-label>
+                            <mat-select  name="categoryDto" [(ngModel)]="quize.categoryId" required>
+                              <mat-option *ngFor="let c of categories" [value]="c.id">
+                                {{c.title}}
+                              </mat-option>
+                            </mat-select>
+
+                          </mat-form-field>
+                          <div class="container text-center">
+                              <button mat-flat-button color="primary" type="submit">Сгенерировать</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</mat-card>

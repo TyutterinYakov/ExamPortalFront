@@ -22,6 +22,10 @@ export class QuizeService {
     return this._http.post(`${baseUrl}/api/admin/categories/quizzes`, quize);
   }
 
+  public generateQuiz(quize:any){
+    return this._http.post(`${baseUrl}/api/admin/categories/quizzes/generate`, quize);
+  }
+
   deleteQuize(id: any) {
     return this._http.delete(`${baseUrl}/api/admin/categories/quizzes/${id}`);
   }

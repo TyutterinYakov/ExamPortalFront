@@ -29,6 +29,7 @@ import { ViewCategoriesComponent } from './pages/admin/view-categories/view-cate
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewQuiziesComponent } from './pages/admin/view-quizies/view-quizies.component';
 import { AddQuizeComponent } from './pages/admin/add-quize/add-quize.component';
+import { GenerateQuizeComponent } from './pages/admin/generate-quize/generate-quize.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
@@ -81,7 +82,8 @@ import { ViewResultComponent } from './pages/user/view-result/view-result.compon
     UpdateProfileComponent,
     StatisticQuizeComponent,
     UpdateCategoryComponent,
-    ViewResultComponent
+    ViewResultComponent,
+    GenerateQuizeComponent
   ],
   imports: [
     BrowserModule,
