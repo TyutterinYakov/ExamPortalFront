@@ -9,35 +9,35 @@
 
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Название</mat-label>
-                            <input 
+                            <input
                             required
-                            type="text" 
-                            placeholder="Введите название" 
+                            type="text"
+                            placeholder="Введите название"
                             name="title"
                             matInput
                             [(ngModel)]="quize.title"
-                            
+
                             >
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Описание</mat-label>
                             <textarea
-                            type="text" 
-                            placeholder="Введите описание" 
+                            type="text"
+                            placeholder="Введите описание"
                             name="description"
                             matInput
                             rows="10"
                             [(ngModel)]="quize.description"
                             ></textarea>
                         </mat-form-field>
-                    
+
                         <mat-slide-toggle
                             color="primary"
                             [checked]="false"
                             [(ngModel)]="quize.active"
                             name="active"
                         >
-                            
+
                             Опубликовать?
                         </mat-slide-toggle>
                         <br/>
@@ -50,6 +50,18 @@
                             </mat-select>
 
                           </mat-form-field>
+                      <mat-form-field appearance="fill" class="mt15 w100">
+                        <mat-label>Должности</mat-label>
+                        <mat-select
+                          name="positions"
+                          [(ngModel)]="quize.positions"
+                          multiple
+                          [compareWith]="comparePositions">
+                          <mat-option *ngFor="let position of positions" [value]="position">
+                            {{ position.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
                           <div class="container text-center">
                               <button mat-flat-button color="primary" type="submit">Сохранить</button>
                           </div>

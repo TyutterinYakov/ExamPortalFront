@@ -21,33 +21,45 @@ export class AddQuizeComponent implements OnInit {
     title:'',
     description:''
   }
-  
+
   quize={
     title:'',
     description:'',
     categoryId:this.categoryData.id,
     active:'',
-
+    positions: []
   }
 
   categories=null;
+  positions=null;
 
   constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService, private _router:Router) { }
 
 
   ngOnInit(): void {
+    this._category.getPositions().subscribe(
+      (data:any)=>{
+        this.positions = data;
+        console.log(data);
+
+      }, (error)=>{
+        console.log(error);
+        Swal.fire("Ошибка", "Попробуйте чуть позже");
+
+      }
+    )
     this._category.categories().subscribe(
       (data:any)=>{
         this.categories=data;
         console.log(data);
-        
+
       }, (error)=>{
         console.log(error);
         Swal.fire("Ошибка", "Попробуйте чуть позже");
-        
+
       }
-    )
-    
+    );
+
   }
 
   formSubmit(){
@@ -60,6 +72,7 @@ export class AddQuizeComponent implements OnInit {
       })
       return;
     }
+    console.log(this.quize);
     this._quize.addQuize(this.quize).subscribe(
       (data:any)=>{
         Swal.fire("Успешно!", "Тест добавлен!").then((e)=>{
@@ -67,8 +80,8 @@ export class AddQuizeComponent implements OnInit {
         });
 
 
-        
-        
+
+
       },
       (error)=>{
 

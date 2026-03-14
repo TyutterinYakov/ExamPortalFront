@@ -30,5 +30,9 @@ export class CategoryService {
     return this._http.put(`${baseUrl}/api/admin/categories/${category.id}`, category);
   }
 
+  getPositions() {
+    return this._http.get(`${baseUrl}/api/admin/positions`);
+  }
+
 
 }

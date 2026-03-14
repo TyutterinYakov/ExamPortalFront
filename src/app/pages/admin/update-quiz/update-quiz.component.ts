@@ -23,22 +23,35 @@ export class UpdateQuizComponent implements OnInit {
     description:'',
     categoryId:this.categoryData.id,
     active:'',
+    positions:[{}]
 
   }
   categories=null;
+  positions=null;
 
   constructor(private _route:ActivatedRoute, private _quize:QuizeService, private _category:CategoryService, private _snack:MatSnackBar, private _router:Router) { }
 
   ngOnInit(): void {
+    this._category.getPositions().subscribe(
+      (data:any)=>{
+        this.positions = data;
+        console.log(data);
+
+      }, (error)=>{
+        console.log(error);
+        Swal.fire("Ошибка", "Попробуйте чуть позже");
+
+      }
+    )
     this._category.categories().subscribe(
       (data:any)=>{
         this.categories=data;
         console.log(data);
-        
+
       }, (error)=>{
         console.log(error);
         Swal.fire("Ошибка", "Попробуйте чуть позже");
-        
+
       }
     )
     this.quizeId = this._route.snapshot.params['quizeId'];
@@ -46,6 +59,7 @@ export class UpdateQuizComponent implements OnInit {
     this._quize.getQuizeAny(this.quizeId).subscribe(
       (data:any)=>{
         this.quize=data;
+        this.quize.categoryId = data.category.id;
         console.log(this.quize);
 
 
@@ -57,6 +71,9 @@ export class UpdateQuizComponent implements OnInit {
     )
 
   }
+comparePositions(pos1: any, pos2: any): boolean {
+  return pos1 && pos2 ? pos1.id === pos2.id : pos1 === pos2;
+}
 
   formSubmit(){
     if(this.quize.title.trim()=='' || this.quize.title==null){
@@ -64,6 +81,9 @@ export class UpdateQuizComponent implements OnInit {
         duration:1000
       })
       return;
+    }
+    if (this.quize.positions != null) {
+      this.quize.positions = this.quize.positions.map((pos: any) => pos.id);
     }
     this._quize.updateQuize(this.quize).subscribe(
       (data:any)=>{

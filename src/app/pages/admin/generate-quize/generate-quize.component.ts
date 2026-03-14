@@ -26,15 +26,28 @@ export class GenerateQuizeComponent implements OnInit {
     topic:'',
     difficulty:'',
     categoryId:this.categoryData.id,
-    questionCount: 10
+    questionCount: 10,
+    positions: []
   }
 
   categories=null;
+  positions=null;
 
   constructor(private _category:CategoryService, private _snack:MatSnackBar, private _quize:QuizeService, private _router:Router) { }
 
 
   ngOnInit(): void {
+    this._category.getPositions().subscribe(
+      (data:any)=>{
+        this.positions = data;
+        console.log(data);
+
+      }, (error)=>{
+        console.log(error);
+        Swal.fire("Ошибка", "Попробуйте чуть позже");
+
+      }
+    )
     this._category.categories().subscribe(
       (data:any)=>{
         this.categories=data;

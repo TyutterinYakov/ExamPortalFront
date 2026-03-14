@@ -47,6 +47,12 @@
                             </mat-select>
 
                           </mat-form-field>
+                          <mat-form-field appearance="fill" class="mt15 w100">
+                            <mat-label>Должности</mat-label>
+                            <mat-select [(ngModel)]="quize.positions" name="positions" multiple>
+                              <mat-option *ngFor="let position of positions" [value]="position.id">{{position.name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                           <div class="container text-center">
                               <button mat-flat-button color="primary" type="submit">Сгенерировать</button>
                           </div>
