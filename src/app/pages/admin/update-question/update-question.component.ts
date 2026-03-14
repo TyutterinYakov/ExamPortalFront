@@ -26,10 +26,14 @@ export class UpdateQuestionComponent implements OnInit {
     option2:'',
     option3:'',
     option4:'',
+    option1_id:'',
+    option2_id:'',
+    option3_id:'',
+    option4_id:'',
     answer:'',
     marks:0,
     time:0,
-    answers:[{reply:'', correctly:false}]
+    answers:[{reply:'', correctly:false, id:''}]
   }
   constructor(private _question:QuestionService, private _route:ActivatedRoute, private _router:Router) { }
 
@@ -44,15 +48,19 @@ export class UpdateQuestionComponent implements OnInit {
             }
             if (i == 0) {
               this.question.option1 = this.question.answers[i].reply;
+              this.question.option1_id = this.question.answers[i].id;
             }
             if (i == 1) {
               this.question.option2 = this.question.answers[i].reply;
+              this.question.option2_id = this.question.answers[i].id;
             }
             if (i == 2) {
               this.question.option3 = this.question.answers[i].reply;
+              this.question.option3_id = this.question.answers[i].id;
             }
             if (i == 3) {
               this.question.option4 = this.question.answers[i].reply;
+              this.question.option4_id = this.question.answers[i].id;
             }
         }
         console.log(data);
@@ -67,26 +75,28 @@ export class UpdateQuestionComponent implements OnInit {
   updateQuestion(){
     const que = new QuestionDto(this.question.content, this.question.quiz.id, this.question.marks, this.question.time)
     if (this.question.option1 == this.question.answer) {
-      que.answers.push(new AnswerDto(this.question.option1, true));
+      que.answers.push(new AnswerDto(this.question.option1_id, this.question.option1, true));
     } else {
-      que.answers.push(new AnswerDto(this.question.option1, false));
+      que.answers.push(new AnswerDto(this.question.option1_id, this.question.option1, false));
     }
     if (this.question.option2 == this.question.answer) {
-      que.answers.push(new AnswerDto(this.question.option2, true));
+      que.answers.push(new AnswerDto(this.question.option2_id, this.question.option2, true));
     } else {
-      que.answers.push(new AnswerDto(this.question.option2, false));
+      que.answers.push(new AnswerDto(this.question.option2_id, this.question.option2, false));
     }
-    var ans3 = null
-    if (this.question.option3 == this.question.answer) {
-      que.answers.push(new AnswerDto(this.question.option3, true));
-    } else {
-      que.answers.push(new AnswerDto(this.question.option3, false));
+    if (this.question.option3 != null && this.question.option3 != '') {
+      if (this.question.option3 == this.question.answer) {
+        que.answers.push(new AnswerDto(this.question.option3_id, this.question.option3, true));
+      } else {
+        que.answers.push(new AnswerDto(this.question.option3_id, this.question.option3, false));
+      }
     }
-    var ans4 = null
-    if (this.question.option4 == this.question.answer) {
-      que.answers.push(new AnswerDto(this.question.option4, true));
-    } else {
-      que.answers.push(new AnswerDto(this.question.option4, false));
+    if (this.question.option4 != null && this.question.option4 != '') {
+      if (this.question.option4 == this.question.answer) {
+        que.answers.push(new AnswerDto(this.question.option4_id, this.question.option4, true));
+      } else {
+        que.answers.push(new AnswerDto(this.question.option4_id, this.question.option4, false));
+      }
     }
     this._question.updateQuestion(JSON.stringify(que), this.questionId).subscribe(
       (data)=>{

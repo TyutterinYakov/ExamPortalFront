@@ -30,8 +30,8 @@ export class AddQuestionComponent implements OnInit {
     option3:'',
     option4:'',
     answer:'',
-    marks:0,
-    time:0,
+    marks:5,
+    time:30,
     answers:''
   }
   
@@ -61,26 +61,28 @@ export class AddQuestionComponent implements OnInit {
     if(this.question.content.trim()!=""&&this.question.content!=null&&this.question.option1.trim()!=""&&this.question.option1!=null&&this.question.option2.trim()!=""&&this.question.option2!=null&&this.question.answer.trim()!=""&&this.question.answer!=null){
       const que = new QuestionDto(this.question.content, this.question.quizId, this.question.marks, this.question.time)
       if (this.question.option1 == this.question.answer) {
-        que.answers.push(new AnswerDto(this.question.option1, true));
+        que.answers.push(new AnswerDto(null, this.question.option1, true));
       } else {
-        que.answers.push(new AnswerDto(this.question.option1, false));
+        que.answers.push(new AnswerDto(null, this.question.option1, false));
       }
       if (this.question.option2 == this.question.answer) {
-        que.answers.push(new AnswerDto(this.question.option2, true));
+        que.answers.push(new AnswerDto(null, this.question.option2, true));
       } else {
-        que.answers.push(new AnswerDto(this.question.option2, false));
+        que.answers.push(new AnswerDto(null, this.question.option2, false));
       }
-      var ans3 = null
-      if (this.question.option3 == this.question.answer) {
-        que.answers.push(new AnswerDto(this.question.option3, true));
-      } else {
-        que.answers.push(new AnswerDto(this.question.option3, false));
+      if (this.question.option3 != null && this.question.option3 != '') {
+        if (this.question.option3 == this.question.answer) {
+          que.answers.push(new AnswerDto(null, this.question.option3, true));
+        } else {
+          que.answers.push(new AnswerDto(null, this.question.option3, false));
+        }
       }
-      var ans4 = null
-      if (this.question.option4 == this.question.answer) {
-        que.answers.push(new AnswerDto(this.question.option4, true));
-      } else {
-        que.answers.push(new AnswerDto(this.question.option4, false));
+      if (this.question.option4 != null && this.question.option4 != '') {
+        if (this.question.option4 == this.question.answer) {
+          que.answers.push(new AnswerDto(null, this.question.option4, true));
+        } else {
+          que.answers.push(new AnswerDto(null, this.question.option4, false));
+        }
       }
 
 

@@ -1,8 +1,10 @@
 export class AnswerDto {
+    id: string
     reply: string;
     correctly: boolean;
   
-    constructor(reply: string, correctly: boolean) {
+    constructor(id: any, reply: string, correctly: boolean) {
+      this.id = id;
       this.reply = reply;
       this.correctly = correctly;
     }
