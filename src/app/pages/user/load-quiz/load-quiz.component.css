@@ -10,3 +10,13 @@
     background-image: url('../../../../assets/exam.png');
     background-size: cover;
 }
+
+.required-true {
+    border-left: 5px solid #1976d2; /* Синий для обязательного */
+    background-color: #e3f2fd;
+}
+
+.required-false {
+    border-left: 5px solid #bdbdbd; /* Серый для опционального */
+    background-color: #fafafa;
+}
