@@ -1,12 +1,10 @@
 <mat-card>
-
     <mat-card-title>Добавить тест</mat-card-title>
     <!-- {{quize | json}} -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <form (ngSubmit)="formSubmit()">
-
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Название</mat-label>
                             <input
@@ -16,7 +14,6 @@
                             name="title"
                             matInput
                             [(ngModel)]="quize.title"
-
                             >
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
@@ -37,7 +34,6 @@
                             [(ngModel)]="quize.active"
                             name="active"
                         >
-
                             Опубликовать?
                         </mat-slide-toggle>
                         <br/>
@@ -48,7 +44,6 @@
                                 {{c.title}}
                               </mat-option>
                             </mat-select>
-
                           </mat-form-field>
                           <mat-form-field appearance="fill" class="mt15 w100">
                             <mat-label>Должности</mat-label>
@@ -63,7 +58,4 @@
                 </div>
             </div>
         </div>
-
-
-
 </mat-card>
