@@ -1,45 +1,62 @@
-<mat-card>
-    <mat-list>
-        <mat-card-title>Результаты теста</mat-card-title>
-        <mat-list-item *ngFor="let s of statistics" class="mb15">
-            <div mat-line>ИФ: {{s.user.firstName}} {{s.user.lastName}}</div>
-            <div mat-line>Тест: {{s.quizTitle}}</div>
-            <div mat-line>Категория: {{s.categoryTitle}}</div>
-            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.maxMarks}}</div>
-            <div mat-line>Правильных ответов: {{s.validQuestion}}</div>
-            <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
-            <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
-            <div mat-line *ngFor="let q of s.examAnswers; let i=index">
-                <hr>
-                <p class="width50">
-                    <strong>#{{i+1}}</strong>
-                    <span class="ml15"></span>
-                    <i>
-                        Дан ответ: {{q.givenAnswer}} 
-                            <strong *ngIf="q.givenAnswer==q.answer"> (Верно)</strong>
-                            <strong *ngIf="q.givenAnswer!=q.answer"> (Неверно)</strong>
-                        
-                        <br>
-                        Правильный ответ: {{(q.answer)}}
-                    </i>
-                    <br>
-                </p>
-                
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="results-container">
+            <h1 class="results-title">Результаты теста</h1>
+
+            <div *ngFor="let s of statistics" class="quiz-result-card">
+                <div class="user-info">
+                    <div class="user-info-item">
+                        <span class="user-info-label">ИФ:</span>
+                        {{s.user.firstName}} {{s.user.lastName}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Тест:</span>
+                        {{s.quizTitle}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Категория:</span>
+                        {{s.categoryTitle}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Количество баллов:</span>
+                        {{s.countPoints}} из {{s.maxMarks}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Правильных ответов:</span>
+                        {{s.validQuestion}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Ошибочных ответов:</span>
+                        {{s.invalidQuestion}}
+                    </div>
+                    <div class="user-info-item">
+                        <span class="user-info-label">Пропущенных вопросов:</span>
+                        {{s.skipQuestion}}
+                    </div>
+                </div>
+
+                <div *ngFor="let q of s.examAnswers; let i=index" class="question-item">
+                    <div class="question-header">
+                        <span class="question-number">#{{i+1}}</span>
+                        <span [class]="q.givenAnswer === q.answer ? 'answer-correct' : 'answer-incorrect'">
+                            {{q.givenAnswer === q.answer ? '(Верно)' : '(Неверно)'}}
+                        </span>
+                    </div>
+                    <div class="question-content">
+                        <p [innerHTML]="sanitizeHtml(q.questionContent)"></p>
+                        <p><strong>Дан ответ:</strong> {{q.givenAnswer}}</p>
+                        <p><strong>Правильный ответ:</strong> {{q.answer}}</p>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button mat-stroked-button color="warn" (click)="removeResult(s.id)">Удалить результат</button>
+                </div>
             </div>
 
-            <mat-divider></mat-divider>
-
-            <div>
-                <button mat-stroked-button color="warn" (click)="removeResult(s.id)">Удалить результат</button>
+            <div class="empty-state" *ngIf="statistics==null || statistics.length==0">
+                <h2 class="empty-state-title">Никто пока не решал этот тест</h2>
             </div>
-        </mat-list-item>
-    </mat-list>
-
-    <div class="col-md-12 mt15" *ngIf="statistics==null||statistics.length==0">
-        <mat-card>
-            <mat-card-content>
-                <h1>Никто пока не решал этот тест</h1>
-            </mat-card-content>
-        </mat-card>
+        </div>
     </div>
-</mat-card>
+</div>

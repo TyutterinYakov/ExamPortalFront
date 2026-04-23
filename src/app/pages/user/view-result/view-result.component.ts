@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ExamResultService } from 'src/app/services/exam-result.service';
 import Swal from 'sweetalert2';
 
@@ -24,19 +25,24 @@ export class ViewResultComponent implements OnInit {
       examAnswers:[{givenAnswer:'', answer:'', questionContent:''}]
     },
   ];
-  constructor(private _exam:ExamResultService) { }
+
+  constructor(private _exam:ExamResultService, private sanitizer: DomSanitizer) { }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
 
   ngOnInit(): void {
     this._exam.checkAllUserResult().subscribe(
       (data:any)=>{
         console.log(data);
         this.results=data;
-        
+
       },
       (error)=>{
         Swal.fire("Ошибка", "Попробуйте выполнить запрос позже!");
         console.log(error);
-        
+
       }
     )
   }

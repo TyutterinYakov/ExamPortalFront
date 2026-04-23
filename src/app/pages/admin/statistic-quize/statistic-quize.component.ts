@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { map } from 'rxjs';
 import { ExamResultService } from 'src/app/services/exam-result.service';
 import { QuizeService } from 'src/app/services/quize.service';
 import Swal from 'sweetalert2';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-statistic-quize',
@@ -34,7 +35,7 @@ export class StatisticQuizeComponent implements OnInit {
     },
   ];
 
-  constructor(private _route:ActivatedRoute, private _exam:ExamResultService) { }
+  constructor(private _route:ActivatedRoute, private _exam:ExamResultService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.quizeId=this._route.snapshot.params['quizeId'];
@@ -48,7 +49,11 @@ export class StatisticQuizeComponent implements OnInit {
         console.log(error);
       }
     )
-    
+
+  }
+
+  sanitizeHtml(html: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   removeResult(answerId:any){

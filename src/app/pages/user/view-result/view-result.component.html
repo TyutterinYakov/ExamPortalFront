@@ -1,39 +1,57 @@
-<mat-card>
-    <mat-list>
-        <mat-card-title>Результаты тестов</mat-card-title>
-        <mat-list-item *ngFor="let s of results">
-            <div mat-line>Тест: {{s.quizTitle}}</div>
-            <div mat-line>Категория: {{s.categoryTitle}}</div>
-            <div mat-line>Количество баллов: {{s.countPoints}} из {{s.maxMarks}}</div>
-            <div mat-line>Правильных ответов: {{s.validQuestion}}</div>
-            <div mat-line>Ошибочных ответов: {{s.invalidQuestion}}</div>
-            <div mat-line>Пропущенных вопросов: {{s.skipQuestion}}</div>
-            <div mat-line *ngFor="let q of s.examAnswers; let i=index">
-                <hr>
-                <p class="width50">
-                    <strong>#{{i+1}}</strong>
-                    <span class="ml15"></span>
-                    <i>
-                        Дан ответ: {{q.givenAnswer}} 
-                            <strong *ngIf="q.givenAnswer==q.answer"> (Верно)</strong>
-                            <strong *ngIf="q.givenAnswer!=q.answer"> (Неверно)</strong>
-                        
-                        <br>
-                        Правильный ответ: {{(q.answer)}}
-                    </i>
-                    <br>
-                </p>
-                
-            </div>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-    </mat-list>
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="results-container">
+            <h1 class="results-title">Результаты тестов</h1>
 
-    <div class="col-md-12 mt15" *ngIf="results==null||results.length==0">
-        <mat-card>
-            <mat-card-content>
-                <h1>Вы пока не решали ни одного теста</h1>
-            </mat-card-content>
-        </mat-card>
+            <div *ngFor="let s of results" class="quiz-result-card">
+                <div class="quiz-info">
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Тест:</span>
+                        {{s.quizTitle}}
+                    </div>
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Категория:</span>
+                        {{s.categoryTitle}}
+                    </div>
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Количество баллов:</span>
+                        {{s.countPoints}} из {{s.maxMarks}}
+                    </div>
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Правильных ответов:</span>
+                        {{s.validQuestion}}
+                    </div>
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Ошибочных ответов:</span>
+                        {{s.invalidQuestion}}
+                    </div>
+                    <div class="quiz-info-item">
+                        <span class="quiz-info-label">Пропущенных вопросов:</span>
+                        {{s.skipQuestion}}
+                    </div>
+                </div>
+
+                <div *ngFor="let q of s.examAnswers; let i=index" class="question-item">
+                    <div class="question-header">
+                        <span class="question-number">#{{i+1}}</span>
+                        <span [class]="q.givenAnswer === q.answer ? 'answer-correct' : 'answer-incorrect'">
+                            {{q.givenAnswer === q.answer ? '(Верно)' : '(Неверно)'}}
+                        </span>
+                    </div>
+                    <div class="question-content">
+                      <p></p>
+                        <p [innerHTML]="sanitizeHtml(q.questionContent)"></p>
+                        <p><strong>Дан ответ:</strong> {{q.givenAnswer}}</p>
+                        <p><strong>Правильный ответ:</strong> {{q.answer}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty-state" *ngIf="results==null || results.length==0">
+                <div class="no-results-icon"><!-- Иконка или изображение --></div>
+                <h2 class="empty-state-title">Вы пока не решали ни одного теста</h2>
+                <p>Когда вы пройдете тест, здесь появятся ваши результаты</p>
+            </div>
+        </div>
     </div>
-</mat-card>
+</div>
